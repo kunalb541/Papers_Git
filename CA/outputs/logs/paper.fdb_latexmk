@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774504969.06915 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774504970.15685 0
+["pdflatex"] 1774531899.84589 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774531900.114 0
   "/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -120,16 +120,16 @@
   "/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774384762 378087 4b8d5243fcbaa795fbf92299894b3b8d ""
   "/usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1774376042 2966189 d2598d2d30e906200ea500d64b952956 ""
   "/usr/local/texlive/2026basic/texmf.cnf" 1772405582 628 bbc09d6d38872d53c11bb48dc9b14e88 ""
-  "outputs/figures/fig1_studyA_scatter.pdf" 1774504007.05895 150118 0d43b0693b085583a209206b8f1b9919 ""
-  "outputs/figures/fig2_studyA_traces.pdf" 1774504007.28428 23384 43cdb3314abdc3349acd6377f167dfd3 ""
-  "outputs/figures/fig3_studyB_windows.pdf" 1774504579.98949 26420 11b6d69c44a5762a11b48f2201accad6 ""
-  "outputs/figures/fig4_studyB_r2_vs_B.pdf" 1774504580.74911 26755 5aa1b2b558bac1944ecda49a2516e745 ""
-  "outputs/figures/fig5_studyC_embedded_vs_alone.pdf" 1774504751.10904 222590 96969a0218bd16f697563eb9174b4a3a ""
-  "outputs/figures/fig6_studyD_slope_summary.pdf" 1774504965.94866 23940 25d7ceadb5bf1a3b8189e6ee59406ee2 ""
-  "outputs/figures/fig7_studyD_decomposition.pdf" 1774504966.72677 27865 c46b4f993e0530d99406e057952d6b0f ""
-  "outputs/logs/paper.aux" 1774504969.89936 12327 b0b6f55f2786e232400284c781981422 "pdflatex"
-  "outputs/logs/paper.out" 1774504969.90167 4144 a22b170cfe5243b48264262da476aad5 "pdflatex"
-  "paper.tex" 1774464241.46828 33365 eeb8c192b564523693e10377a3546e2a ""
+  "outputs/figures/fig1_studyA_scatter.pdf" 1774531558.23935 150118 72d2606acd2323ef323014138a161e99 ""
+  "outputs/figures/fig2_studyA_traces.pdf" 1774531558.46508 23384 9efbfa012d49db292d8d9ff5fa4516e9 ""
+  "outputs/figures/fig3_studyB_windows.pdf" 1774531776.4386 26420 87ccefb2d978261c332cae4289106e85 ""
+  "outputs/figures/fig4_studyB_r2_vs_B.pdf" 1774531776.57091 26755 1b78463e40fb883374e38533ce13bc40 ""
+  "outputs/figures/fig5_studyC_embedded_vs_alone.pdf" 1774531830.64098 222590 7da292bbd33f339a83d0396306d88e19 ""
+  "outputs/figures/fig6_studyD_slope_summary.pdf" 1774531898.99918 23940 76a5b03cb1605f547481405c17499385 ""
+  "outputs/figures/fig7_studyD_decomposition.pdf" 1774531899.16653 27865 8139a1d4414e1597a05353bdf182b9ec ""
+  "outputs/logs/paper.aux" 1774531900.05162 12327 b0b6f55f2786e232400284c781981422 "pdflatex"
+  "outputs/logs/paper.out" 1774531900.05224 4144 a22b170cfe5243b48264262da476aad5 "pdflatex"
+  "paper.tex" 1774531566.31708 33144 aa568f94b28d6af001bcbf07013d5f11 ""
   (generated)
   "outputs/logs/paper.aux"
   "outputs/logs/paper.log"

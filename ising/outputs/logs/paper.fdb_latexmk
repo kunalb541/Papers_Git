@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774504239.49454 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774504240.8553 0
+["pdflatex"] 1774531982.33347 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774531982.94356 0
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -114,16 +114,16 @@
   "/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774384762 378087 4b8d5243fcbaa795fbf92299894b3b8d ""
   "/usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1774376042 2966189 d2598d2d30e906200ea500d64b952956 ""
   "/usr/local/texlive/2026basic/texmf.cnf" 1772405582 628 bbc09d6d38872d53c11bb48dc9b14e88 ""
-  "outputs/data/paper_macros.tex" 1774504237.07345 980 5e94ffba16e27da7017b5651cb23f45d ""
-  "outputs/figures/ising_axis1_organism.png" 1774504235.90812 44960 0ebe4d94c8db38a5c984634206304e30 ""
-  "outputs/figures/ising_axis2_target.png" 1774504236.02597 51725 4bf504dda31783ce143743ce9a4cc4d1 ""
-  "outputs/figures/ising_axisB_aligned_vs_misaligned.png" 1774504236.22873 58209 7fd6849933b639a458588b93dcb76511 ""
-  "outputs/figures/ising_axisB_target_specificity.png" 1774504236.61155 63845 0bbdbe0af22178e9a51f7edcfebfe080 ""
-  "outputs/figures/ising_main_summary_panel.png" 1774504236.96472 122400 b5bf0e3d94e3c854dccb2a623596c921 ""
-  "outputs/figures/ising_schematic.png" 1774504235.76438 27879 927c5d1c3b308782cd3649f51054d650 ""
-  "outputs/logs/paper.aux" 1774504240.75813 13434 7705c318ad780756777681260c733566 "pdflatex"
-  "outputs/logs/paper.out" 1774504240.75948 4606 191a34880b2a5c8ac2817c2a2e62809b "pdflatex"
-  "paper.tex" 1774503853.43168 31097 4ae35345cc5d849ccd9a40b73e2c0bcb ""
+  "outputs/data/paper_macros.tex" 1774531980.84233 980 b3c3514b503cf972c92b1fb445f726f3 ""
+  "outputs/figures/ising_axis1_organism.png" 1774531980.28732 45277 45a69620b4c307c7f29addcd93410d41 ""
+  "outputs/figures/ising_axis2_target.png" 1774531980.33481 51804 3645c5b43c0405586e7f3db14828812e ""
+  "outputs/figures/ising_axisB_aligned_vs_misaligned.png" 1774531980.43215 58483 5716cac46d8689d9ec51f61a4d583054 ""
+  "outputs/figures/ising_axisB_target_specificity.png" 1774531980.62051 62705 9c3b9a228dd0d04cc80db8c317f5cd45 ""
+  "outputs/figures/ising_main_summary_panel.png" 1774531980.78916 128094 52402a5bc5c6b34f201b497571fed37a ""
+  "outputs/figures/ising_schematic.png" 1774531980.228 38249 46fbac8e4273c01f72415d364adeac98 ""
+  "outputs/logs/paper.aux" 1774531982.8991 13434 3f268dcbcdb5c1f15d1eac7c71924c99 "pdflatex"
+  "outputs/logs/paper.out" 1774531982.89972 4606 191a34880b2a5c8ac2817c2a2e62809b "pdflatex"
+  "paper.tex" 1774531733.66843 31205 7ad917a4b9faa774eefc121a205b81b3 ""
   (generated)
   "outputs/logs/paper.aux"
   "outputs/logs/paper.log"

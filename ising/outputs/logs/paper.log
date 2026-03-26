@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  26 MAR 2026 06:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  26 MAR 2026 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -525,19 +525,19 @@ File: outputs/figures/ising_schematic.png Graphic file (type png)
 Package pdftex.def Info: outputs/figures/ising_schematic.png  used on input lin
 e 270.
 (pdftex.def)             Requested size: 224.27148pt x 233.16956pt.
-<outputs/figures/ising_axis1_organism.png, id=192, 586.29037pt x 304.88907pt>
+<outputs/figures/ising_axis1_organism.png, id=192, 593.96906pt x 304.88907pt>
 File: outputs/figures/ising_axis1_organism.png Graphic file (type png)
 <use outputs/figures/ising_axis1_organism.png>
 Package pdftex.def Info: outputs/figures/ising_axis1_organism.png  used on inpu
 t line 295.
-(pdftex.def)             Requested size: 379.53534pt x 197.37071pt.
+(pdftex.def)             Requested size: 379.53534pt x 194.82594pt.
  [5 <./outputs/figures/ising_schematic.png>]
-<outputs/figures/ising_axis2_target.png, id=203, 586.29037pt x 305.79243pt>
+<outputs/figures/ising_axis2_target.png, id=203, 593.96906pt x 305.79243pt>
 File: outputs/figures/ising_axis2_target.png Graphic file (type png)
 <use outputs/figures/ising_axis2_target.png>
 Package pdftex.def Info: outputs/figures/ising_axis2_target.png  used on input 
 line 357.
-(pdftex.def)             Requested size: 379.53534pt x 197.95549pt.
+(pdftex.def)             Requested size: 379.53534pt x 195.40318pt.
  [6 <./outputs/figures/ising_axis1_organism.png>]
 <outputs/figures/ising_axisB_aligned_vs_misaligned.png, id=212, 522.60243pt x 3
 26.57007pt>
@@ -557,25 +557,25 @@ ed on input line 406.
 (pdftex.def)             Requested size: 379.53534pt x 170.13438pt.
  [7 <./outputs/figures/ising_axis2_target.png>]
 [8 <./outputs/figures/ising_axisB_aligned_vs_misaligned.png>]
-<outputs/figures/ising_main_summary_panel.png, id=237, 1345.12538pt x 338.76563
+<outputs/figures/ising_main_summary_panel.png, id=237, 1352.80406pt x 338.76563
 pt>
 File: outputs/figures/ising_main_summary_panel.png Graphic file (type png)
 <use outputs/figures/ising_main_summary_panel.png>
 Package pdftex.def Info: outputs/figures/ising_main_summary_panel.png  used on 
 input line 505.
-(pdftex.def)             Requested size: 431.28778pt x 108.61914pt.
+(pdftex.def)             Requested size: 431.28778pt x 107.99884pt.
  [9 <./outputs/figures/ising_axisB_target_specificity.png> <./outputs/figures/i
 sing_main_summary_panel.png>] [10]
 Overfull \hbox (10.6187pt too wide) in paragraph at lines 624--628
 []\OT1/cmr/bx/n/10.95 (-20) Axis 1 (or-gan-ism com-par-i-son): $\OML/cmm/m/it/1
 0.95 E[] \OT1/cmr/m/n/10.95 (-20) + \OML/cmm/m/it/10.95 J$ \OT1/cmr/m/n/10.95 (
 -20) achieves $^^A\OML/cmm/m/it/10.95 R[] \OT1/cmr/m/n/10.95 (-20) = +0\OML/cmm
-/m/it/10.95 :\OT1/cmr/m/n/10.95 (-20) 369$ (CI $[+0\OML/cmm/m/it/10.95 :\OT1/cm
-r/m/n/10.95 (-20) 343\OML/cmm/m/it/10.95 ;  \OT1/cmr/m/n/10.95 (-20) +0\OML/cmm
-/m/it/10.95 :\OT1/cmr/m/n/10.95 (-20) 396]$)
+/m/it/10.95 :\OT1/cmr/m/n/10.95 (-20) 415$ (CI $[+0\OML/cmm/m/it/10.95 :\OT1/cm
+r/m/n/10.95 (-20) 389\OML/cmm/m/it/10.95 ;  \OT1/cmr/m/n/10.95 (-20) +0\OML/cmm
+/m/it/10.95 :\OT1/cmr/m/n/10.95 (-20) 443]$)
  []
 
-[11] [12] (outputs/logs/paper.aux)
+[11] [12] [13] (outputs/logs/paper.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -584,13 +584,13 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 191A34880B2A5C8AC2817C2A2E62809B;4606.
  ) 
 Here is how much of TeX's memory you used:
- 14821 strings out of 469006
- 234186 string characters out of 5454813
+ 14825 strings out of 469006
+ 234249 string characters out of 5454813
  686294 words of memory out of 5000000
- 43089 multiletter control sequences out of 15000+600000
- 644630 words of font info for 174 fonts, out of 8000000 for 9000
+ 43091 multiletter control sequences out of 15000+600000
+ 644798 words of font info for 175 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,10n,79p,1002b,565s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1002b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/
@@ -610,10 +610,10 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basi
 c/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026
 basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
 2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on outputs/logs/paper.pdf (12 pages, 598786 bytes).
+Output written on outputs/logs/paper.pdf (13 pages, 611686 bytes).
 PDF statistics:
- 370 PDF objects out of 1000 (max. 8388607)
- 304 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 39639 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 377 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 40151 words of extra memory for PDF output out of 42996 (max. 10000000)
 

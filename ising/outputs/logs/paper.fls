@@ -1,4 +1,4 @@
-PWD /Users/kunalbhatia/Desktop/Papers/ising
+PWD /Users/kunalbhatia/Desktop/Papers_Git/ising
 INPUT /usr/local/texlive/2026basic/texmf.cnf
 INPUT /usr/local/texlive/2026basic/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -237,6 +237,7 @@ INPUT ./outputs/figures/ising_main_summary_panel.png
 INPUT ./outputs/figures/ising_main_summary_panel.png
 INPUT ./outputs/figures/ising_main_summary_panel.png
 INPUT ./outputs/figures/ising_main_summary_panel.png
+INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT outputs/logs/paper.aux
 INPUT outputs/logs/paper.out
 INPUT outputs/logs/paper.out

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1774503999.47249 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774503999.73173 0
+["pdflatex"] 1774531969.95984 "paper.tex" "outputs/logs/paper.pdf" "paper" 1774531970.38372 0
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -99,9 +99,9 @@
   "/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1774384762 378087 4b8d5243fcbaa795fbf92299894b3b8d ""
   "/usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1774376042 2966189 d2598d2d30e906200ea500d64b952956 ""
   "/usr/local/texlive/2026basic/texmf.cnf" 1772405582 628 bbc09d6d38872d53c11bb48dc9b14e88 ""
-  "outputs/data/paper_macros.tex" 1774503999.09124 575 7d16f15a27a27ebce602379d2ac4ecf5 ""
-  "outputs/logs/paper.aux" 1774503999.68573 2662 4b78a4e1facbfa827fa2f360e8c9f102 "pdflatex"
-  "outputs/logs/paper.out" 1774503999.68606 1394 5da352cde40a3f8398ffcb9f045ed07d "pdflatex"
+  "outputs/data/paper_macros.tex" 1774531969.40713 575 7d16f15a27a27ebce602379d2ac4ecf5 ""
+  "outputs/logs/paper.aux" 1774531970.31039 2662 4b78a4e1facbfa827fa2f360e8c9f102 "pdflatex"
+  "outputs/logs/paper.out" 1774531970.31295 1394 5da352cde40a3f8398ffcb9f045ed07d "pdflatex"
   "paper.tex" 1774503822.68313 12015 131d924b580725cc47ae53e076ef87c5 ""
   (generated)
   "outputs/logs/paper.aux"
