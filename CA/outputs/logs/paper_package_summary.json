@@ -1,0 +1,41 @@
+{
+  "Study_A": {
+    "r_main": -0.7645592357522297,
+    "partial_r": -0.8475970452999128,
+    "partial_r_ci": [
+      -0.8623450840447152,
+      -0.8303950764487492
+    ],
+    "replication_partial_r": -0.8353625462077148,
+    "verdict": "PASS \u2014 Study A center earned"
+  },
+  "Study_B": {
+    "verdict": "PASS \u2014 target-relative scale structure earned",
+    "negative_control_n_positive": 0,
+    "Nlive_peak": [
+      2,
+      2,
+      4
+    ],
+    "Nocc8_peak": [
+      8,
+      8,
+      8
+    ]
+  },
+  "Study_C": {
+    "verdict": "FAIL \u2014 simple mediation through fine_net not earned",
+    "r_embedded_G": 0.47121223882721797,
+    "r_alone_G": 0.327968857587229,
+    "partial_r_embedded_G": 0.6321363613464872,
+    "partial_r_alone_G": 0.40318735598538763
+  },
+  "Study_D": {
+    "beta_emp_mean": -1.5211619062921644,
+    "beta_emp_cv": 0.08725611995827355,
+    "chi_mean": -1.7810098217904782,
+    "chi_min": -2.123536202609894,
+    "empirical_verdict": "PASS \u2014 empirical slope law earned",
+    "residual_verdict": "NOT EARNED \u2014 residual-survival claim fails under dynamic local null"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "pairwise": {
+    "r_embedded_G": 0.47121223882721797,
+    "p_embedded_G": 2.0651239031727404e-56,
+    "r_alone_G": 0.327968857587229,
+    "p_alone_G": 1.6632949430556835e-26,
+    "r_embedded_finenet": -0.730671460499021,
+    "p_embedded_finenet": 1.3127212949783275e-167,
+    "r_finenet_G": -0.26793149202149846,
+    "p_finenet_G": 6.6820015266096715e-18,
+    "partial_r_embedded_G": 0.6321363613464872,
+    "partial_r_alone_G": 0.40318735598538763,
+    "partial_r_embedded_finenet": -0.6080627990027432
+  },
+  "mediation": {
+    "total_effect_embedded": 0.006370190838493163,
+    "a_path_embedded_to_finenet": -1.2251327600507296,
+    "b_path_finenet_to_G": 0.00037618017590525113,
+    "direct_effect_embedded": 0.006831061495676332,
+    "indirect_effect": -0.00046087065718316926,
+    "mediation_fraction": -0.07234801419107656,
+    "boot_ci95_lo": -0.1451626350469464,
+    "boot_ci95_hi": -0.007264787342471621,
+    "verdict": "FAIL"
+  },
+  "verdict": "FAIL \u2014 simple mediation through fine_net not earned"
+}

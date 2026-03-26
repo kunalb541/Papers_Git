@@ -1,0 +1,297 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\input{outputs/data/paper_macros.tex}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Gr}{\mathrm{Gr}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{Task-Relative Descriptive Privilege in\\
+Linear Gaussian Dynamical Systems}
+\author{Kunal Bhatia\\
+\small Independent Researcher, Heidelberg\\
+\small \texttt{kunal29bhatia@gmail.com}}
+
+\date{March 2026\quad\textit{Preprint --- not peer reviewed}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We ask whether a single description can be simultaneously optimal for all
+prediction tasks in a linear dynamical system.
+In a finite-dimensional linear Gaussian dynamical system, the optimal rank-$r$
+observer for a squared-error prediction target is uniquely determined by the
+top-$r$ eigenspace of a target information matrix derived from the stationary
+covariance and the dynamics.
+Two targets whose information matrices have distinct top-$r$ eigenspaces
+admit no jointly optimal observer.
+Global privilege holds if and only if the target family is \emph{$r$-coherent}:
+all information matrices share a common top-$r$ eigenspace.
+$r$-coherence requires strong structural alignment between the dynamics and the
+task family.
+Outside it, privilege is task-relative within this class.
+We illustrate the theorem numerically: a concrete no-privilege instance yields a
+global-privilege gap of $\Gamma = \GammaCondA > 0$, and structural coherence
+is confirmed to be perturbation-robust.
+\end{abstract}
+
+\section{Introduction}
+
+A basic question in the study of dynamical systems is whether there is a
+single low-dimensional description that is optimal for every prediction task,
+or whether the optimal description depends on the target one seeks to predict.
+This paper answers that question exactly for finite-dimensional linear Gaussian
+dynamical systems (LGDS).
+The optimal rank-$r$ observer is the top-$r$ eigenspace of a target information
+matrix.
+Two targets whose information matrices have distinct dominant subspaces cannot
+be simultaneously optimised by any single observer.
+The exception has an exact algebraic characterisation: $r$-coherence of the
+target family.
+
+This yields three things useful for the present question:
+an exact risk formula with no approximation,
+a proof that task-relative privilege is the rule within this class,
+and an explicit algebraic criterion for when global privilege is warranted.
+
+This result is intentionally narrow.
+It concerns only finite-dimensional linear Gaussian dynamical systems,
+fixed-rank linear observers, and squared-error prediction targets.
+
+\section{System and Observer Family}
+
+\paragraph{Dynamics.}
+Let
+\begin{equation}
+  x_{t+1} = A x_t + \xi_t, \qquad \xi_t \sim \mathcal{N}(0, Q),
+  \quad x_t \in \R^n,
+\end{equation}
+with $A$ stable (spectral radius $<1$) and $Q \succ 0$.
+The unique stationary covariance $\Sigma$ satisfies
+$A \Sigma A^\top + Q = \Sigma$ and is strictly positive definite.
+
+\paragraph{Observer family.}
+An observer of rank $r$ ($1 \le r < n$) is parametrised by a
+row-orthonormal matrix $U \in \R^{r \times n}$, $U U^\top = I_r$:
+\begin{equation}
+  \phi_U(x) = U \Sigma^{-1/2} x.
+\end{equation}
+Pre-whitening by $\Sigma^{-1/2}$ places all observers on a common isotropic
+footing.
+Two observers differing only by an orthogonal rotation of their row spaces are
+equivalent; the observer space is the Grassmannian
+$\Gr(r,n)$, a smooth compact Riemannian manifold of dimension $r(n-r)$,
+with metric and geodesic structure from $O(n)$.
+
+\paragraph{Target family.}
+A prediction target is a pair $(C, \tau)$ with $C \in \R^{p \times n}$ and
+integer $\tau \ge 1$:
+\begin{equation}
+  y_{C,\tau} = C x_{t+\tau}.
+\end{equation}
+Performance is total mean squared prediction error.
+A target family $\mathcal{T} = \{(C_k, \tau_k)\}$ is any finite collection.
+
+\section{Theorem}
+
+\subsection{Exact Bayes risk formula}
+
+Given observation $z = U \Sigma^{-1/2} x_t$, the MMSE predictor of
+$Cx_{t+\tau}$ is linear by Gaussian conjugacy.
+At stationarity,
+$\mathrm{Cov}(Cx_{t+\tau},\,z^\top) = CA^\tau \Sigma^{1/2} U^\top$
+and $\mathrm{Cov}(z,z^\top) = I_r$.
+The Bayes risk is
+\begin{equation}
+  \mathcal{R}(U;\,C,\tau)
+    = \tr(C\Sigma C^\top) - \tr\!\bigl(U\,M_{C,\tau}\,U^\top\bigr),
+\end{equation}
+where the \emph{target information matrix} is
+\begin{equation}
+  M_{C,\tau}
+    = \Sigma^{1/2}(A^\tau)^\top C^\top C A^\tau \Sigma^{1/2}
+    \;\in\; \R^{n\times n}.
+\end{equation}
+$M_{C,\tau}$ is symmetric positive semidefinite of rank at most $\min(p,n)$.
+The formula is exact.
+
+\subsection{Top-eigenspace optimality}
+
+\begin{proposition}\label{prop:opt}
+For fixed rank $r$, the observer minimising $\mathcal{R}(U;\,C,\tau)$ over
+$\Gr(r,n)$ has row space equal to the top-$r$ eigenspace of $M_{C,\tau}$.
+The minimum risk is
+\begin{equation}
+  \mathcal{R}^*
+    = \tr(C\Sigma C^\top) - \sum_{i=1}^{r} \lambda_i(M_{C,\tau}),
+\end{equation}
+where $\lambda_1 \ge \cdots \ge \lambda_n$ are the eigenvalues of $M_{C,\tau}$.
+Uniqueness up to rotation holds when $\lambda_r > \lambda_{r+1}$.
+\end{proposition}
+
+\begin{proof}
+Minimising $\mathcal{R}$ is equivalent to maximising
+$\tr(U M_{C,\tau} U^\top)$ subject to $UU^\top = I_r$.
+By the Ky Fan variational principle the maximum equals
+$\sum_{i=1}^r \lambda_i(M_{C,\tau})$, achieved exactly when the row space of
+$U$ spans the corresponding eigenspace.
+\end{proof}
+
+\subsection{No-global-privilege corollary}
+
+\begin{corollary}\label{cor:noglobal}
+If targets $(C_1,\tau_1)$ and $(C_2,\tau_2)$ have information matrices
+$M_1$ and $M_2$ with distinct top-$r$ eigenspaces, no single rank-$r$ observer
+is simultaneously optimal for both.
+\end{corollary}
+
+\begin{proof}
+Optimality for target $k$ requires the row space of $U$ to equal the top-$r$
+eigenspace of $M_k$.
+Distinct eigenspaces cannot be spanned by the same $U$.
+\end{proof}
+
+The corollary extends to any finite target family: if $\{M_k\}$ do not share
+a common top-$r$ eigenspace, no rank-$r$ observer is globally optimal.
+
+\subsection{$r$-coherence: the exact exception}
+
+\begin{definition}\label{def:rcoh}
+A target family $\mathcal{T}$ is \emph{$r$-coherent} with respect to
+$(A,\Sigma)$ if all matrices $\{M_{C,\tau}:(C,\tau)\in\mathcal{T}\}$
+share a common top-$r$ eigenspace $V^*$.
+\end{definition}
+
+\begin{corollary}\label{cor:coherence}
+Global privilege holds if and only if $\mathcal{T}$ is $r$-coherent.
+\end{corollary}
+
+$r$-coherence requires all targets to be linear functionals of a common
+$r$-dimensional sufficient statistic across all horizons -- a strong structural
+alignment between the dynamics and the task family.
+Outside $r$-coherence, the optimal observer generally depends on the target
+within the class studied here.
+
+\begin{remark}
+$r$-coherence is an algebraic equality between eigenspaces, not an
+approximate or asymptotic condition.
+It is the exact characterisation of when global privilege is warranted.
+\end{remark}
+
+\section{Numerical Illustrations}
+
+The theorem is analytically exact under its stated assumptions.
+We illustrate it numerically with two finite-dimensional instances:
+a no-global-privilege example and a structurally coherent example.
+All reported quantities are computed exactly from the analytic Bayes risk
+formula and numerical optimization on the Grassmannian.
+
+\paragraph{Setup.}
+State dimension $n=8$, observer rank $r=2$.
+$A = VDV^{-1}$ with eigenvalues drawn from $U[0.3,0.85]$, random
+non-orthogonal $V$ (seed 100), $Q = 0.1\,I_8$.
+$\Sigma$ is computed from the discrete Lyapunov equation; $\Sigma\succ 0$
+is confirmed to machine precision.
+All reported quantities are computed exactly from the analytic Bayes risk
+formula, eigenspace calculations, and repeated projected optimization over
+$\Gr(2,8)$.
+
+\paragraph{Condition A: no-global-privilege instance.}
+Targets $T_1 = ([e_1^\top;\,e_2^\top],\,1)$ and
+$T_2 = ([e_5^\top;\,e_6^\top],\,5)$.
+With non-normal $A$, $A^1$ and $A^5$ rotate state-space directions
+differently; the principal angles between the top-2 eigenspaces of $M_1$ and
+$M_2$ are $\CondAAngleOne^\circ$ and $\CondAAngleTwo^\circ$, confirming
+that no single rank-2 observer is simultaneously optimal.
+
+The global-privilege gap
+\begin{equation}
+  \Gamma
+    = \min_{U\in\Gr(r,n)}\,\max_k\,
+      \bigl[\mathcal{R}(U;\,C_k,\tau_k) - \mathcal{R}^*_k\bigr]
+\end{equation}
+measures the best achievable worst-case regret under task conflict.
+The minimax observer $U_{\mathrm{joint}}$, found by repeated projected
+optimization over $\Gr(2,8)$ from random initializations, achieves
+$\Gamma = \GammaCondA > 0$.
+No globally optimal observer exists for this target family.
+Table~\ref{tab:condA} gives the full regret structure.
+The asymmetry in the off-diagonal entries reflects the geometry of the instance:
+$U^*_2$ is optimised for directions nearly orthogonal to $T_1$, so its
+cross-regret is large; $U^*_1$ retains partial overlap with the
+long-horizon $T_2$ target, so its cross-regret is small.
+Both are computed from the same analytic formula.
+
+\begin{table}[tbp]
+\centering
+\caption{Regret matrix, Condition A ($n=8$, $r=2$, seed 100).
+All values from the exact analytic Bayes risk formula.}
+\label{tab:condA}
+\begin{tabular}{lcc}
+\toprule
+Observer & Regret on $T_1$ & Regret on $T_2$ \\
+\midrule
+$U^*_1$ (optimal for $T_1$) & \CondARegretUoneTa & \CondARegretUoneTb \\
+$U^*_2$ (optimal for $T_2$) & \CondARegretUtwoTa & \CondARegretUtwoTb \\
+$U_{\mathrm{joint}}$ (compromise) & \CondARegretUjointTa & \CondARegretUjointTb \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Condition B$'$: structural coherence and its robustness.}
+A target family is constructed so that all $M_k$ share the same top-2
+eigenspace by design: normal $A_{\mathrm{sym}} = VDV^\top$ with orthogonal
+$V$, and a common $C$ whose rows are the top-2 eigenvectors of $A$, varying
+only the prediction horizon $\tau \in \{1,2,3,5\}$.
+Under this construction $M_{C,\tau}$ has the same dominant 2-dimensional
+eigenspace for all $\tau$, so the four optimal observers are identical by the
+theorem.
+The maximum pairwise principal angle across all four is
+$\CondBMaxAngleDeg^\circ$ to machine precision.
+
+Under $\varepsilon = \CondBPertEps$ perturbations to $C$
+(\CondBPertDraws{} random draws), the maximum principal angle across all
+draws and all pairs is $\CondBPertMaxRad$~rad -- well below the fragility
+threshold of $\CondBPertThreshold$~rad.
+Structural coherence is perturbation-robust, distinguishing it from
+accidental near-coincidences of eigenspaces that break under small
+perturbations.
+
+The numerical results are consistent with the theorem in all cases.
+
+\section{Scope}
+
+\paragraph{What is earned.}
+In finite-dimensional linear Gaussian dynamical systems at stationarity,
+among rank-$r$ linear observers $\phi_U(x)=U\Sigma^{-1/2}x$ and
+squared-error prediction targets $y=Cx_{t+\tau}$,
+descriptive privilege is task-relative unless the target family is
+$r$-coherent.
+$r$-coherence requires strong structural alignment between dynamics and tasks.
+Outside it, no fixed-rank observer is globally optimal, and the cost of
+forcing any observer onto a non-native target is given exactly by the Bayes
+risk formula.
+The Grassmannian $\Gr(r,n)$ is the literal domain of this optimisation:
+a compact Riemannian manifold on which observer quality is a smooth function,
+with $O(n)$ acting by transformation.
+
+\paragraph{What is not earned.}
+This result does not apply to nonlinear systems, non-Gaussian noise,
+nonlinear observers, or non-prediction tasks.
+The causal axis -- whether the observer optimal for intervention differs from
+the observer optimal for prediction -- is not addressed here.
+
+\end{document}

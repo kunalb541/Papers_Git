@@ -1,0 +1,23 @@
+{
+  "SEED": 20260325,
+  "NMAX": 3,
+  "GAMMA_BASE": 0.1,
+  "GAMMA_EXTRA": 0.5,
+  "BURN_IN_TIME": 5.0,
+  "N_TRIALS": 100,
+  "TAU_LIST": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "J_OVER_U_LIST": [
+    0.12,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "L_LIST": [
+    6,
+    7
+  ]
+}

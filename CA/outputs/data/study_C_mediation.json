@@ -1,0 +1,11 @@
+{
+  "total_effect_embedded": 0.006370190838493163,
+  "a_path_embedded_to_finenet": -1.2251327600507296,
+  "b_path_finenet_to_G": 0.00037618017590525113,
+  "direct_effect_embedded": 0.006831061495676332,
+  "indirect_effect": -0.00046087065718316926,
+  "mediation_fraction": -0.07234801419107656,
+  "boot_ci95_lo": -0.1451626350469464,
+  "boot_ci95_hi": -0.007264787342471621,
+  "verdict": "FAIL"
+}

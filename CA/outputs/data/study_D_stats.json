@@ -1,0 +1,9 @@
+{
+  "beta_emp_mean": -1.5211619062921644,
+  "beta_emp_sd": 0.13273068577138517,
+  "beta_emp_cv": 0.08725611995827355,
+  "chi_mean": -1.7810098217904782,
+  "chi_min": -2.123536202609894,
+  "empirical_verdict": "PASS \u2014 empirical slope law earned",
+  "residual_verdict": "NOT EARNED \u2014 residual-survival claim fails under dynamic local null"
+}

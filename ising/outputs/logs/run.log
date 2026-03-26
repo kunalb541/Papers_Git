@@ -1,0 +1,87 @@
+======================================================================
+ising_paper.py v2  FULL_RUN=True  N_PRED=3000  N_CAUSAL=3000
+L=64  K=20  T_ORD=1.8  T_DIS=2.5  EQUIL=1000
+Axis B protocol: aligned-vs-misaligned generator, sign-flip discriminator
+======================================================================
+warmup OK
+
+--- Predictive battery (ordered T=1.80) ---
+  ordered 750/3000
+  ordered 1500/3000
+  ordered 2250/3000
+  ordered 3000/3000
+
+--- Predictive battery (disordered T=2.50) ---
+  disordered 750/3000
+  disordered 1500/3000
+  disordered 2250/3000
+  disordered 3000/3000
+
+--- Axis 1: organism comparison ---
+  E                     : ΔR²=+0.1602  CI=[+0.1363,+0.1856]  R²=0.1595
+  E_ge3                 : ΔR²=+0.2623  CI=[+0.2347,+0.2886]  R²=0.2595
+  J                     : ΔR²=+0.0045  CI=[-0.0007,+0.0096]  R²=0.0031
+  E_ge3_plus_J          : ΔR²=+0.3687  CI=[+0.3434,+0.3962]  R²=0.3689
+  E_plus_J              : ΔR²=+0.1915  CI=[+0.1669,+0.2183]  R²=0.1884
+  minority              : ΔR²=+0.0001  CI=[-0.0007,+0.0010]  R²=-0.0032
+
+  Champion organism: E_ge3_plus_J
+
+--- Axis A: regime crossover (E vs phi8) ---
+  Ordered   T=1.8: ΔR²=+0.1602  CI=[+0.1363,+0.1852]
+  Disordered T=2.5: ΔR²=-0.0895  CI=[-0.1109,-0.0684]
+  Sign reversal: True
+
+--- Axis C: predictor/handle gap ---
+  R²([W0,Bmag]): 0.3318  R²(E): 0.1577  gap: +0.1741
+
+--- Axis 2: target comparison (ΔR² fine-over-coarse, predictor=E_ge3_plus_J) ---
+  Criterion: ΔR² = R²(champion organism) - R²(phi_var8) on each target
+  This identifies the target most specifically favoured by the fine organism,
+  not merely the most predictable target overall.
+  dW                            : ΔR²=+0.3703  CI=[+0.3428,+0.3958]  R²_fine=0.3687  R²_coarse=-0.0023
+  dW_norm                       : ΔR²=+0.3523  CI=[+0.3283,+0.3802]  R²_fine=0.3469  R²_coarse=-0.0105
+  future_topshare               : ΔR²=+0.1098  CI=[+0.0906,+0.1300]  R²_fine=0.2903  R²_coarse=0.1779
+  future_changed_sites          : ΔR²=+0.0585  CI=[+0.0509,+0.0666]  R²_fine=0.9428  R²_coarse=0.8839
+  future_changed_frac           : ΔR²=+0.0590  CI=[+0.0499,+0.0674]  R²_fine=0.9427  R²_coarse=0.8841
+
+--- Axis B: aligned vs misaligned generator ---
+  Protocol: structure_aligned_sweep, two directions, vs baseline Glauber
+  Earn condition: aligned>0 AND misaligned<0, both CIs exclude zero
+  causal 750/3000
+  causal 1500/3000
+  causal 2250/3000
+  causal 3000/3000
+
+  eps   | aligned dW              | misaligned dW           | sign_flip | dM_vs_dW_ratio
+  ------------------------------------------------------------------------------------------
+  0.02  | +3.155 [+1.353,+4.915] | -5.569 [-7.526,-3.465] |      PASS | 0.000 (dM/dW_aligned)
+  0.05  | +4.521 [+2.743,+6.256] | -13.855 [-15.767,-11.827] |      PASS | 0.000 (dM/dW_aligned)
+  0.10  | +6.320 [+4.214,+8.236] | -26.971 [-28.986,-24.990] |      PASS | 0.000 (dM/dW_aligned)
+  0.20  | +3.983 [+2.043,+5.989] | -52.321 [-54.520,-50.224] |      PASS | 0.000 (dM/dW_aligned)
+  NOTE on dM: the dominant effect is on ΔW; ΔM coupling is comparatively small.
+  dM does not strictly null 4/4 — do not write 'ΔM null 4/4'.
+  Paper wording: 'direction-specific on ΔW; ΔM remains comparatively small'.
+
+--- Generating figures ---
+  fig: ising_schematic.png
+  fig: ising_axis1_organism.png
+  fig: ising_axis2_target.png
+  fig: ising_axisB_aligned_vs_misaligned.png
+  fig: ising_axisB_target_specificity.png
+  fig: ising_main_summary_panel.png
+
+--- Saving outputs ---
+  tables + JSON + macros saved
+
+======================================================================
+FINAL REPORT
+======================================================================
+  Axis 1  champion:  E_ge3_plus_J  ΔR²=+0.3687
+  Axis A  crossover: T=1.8 ΔR²=+0.1602  T=2.5 ΔR²=-0.0895  sign_reversal=True
+  Axis 2  champion target: dW  ΔR²=+0.3703
+  Axis C  gap:       R²([W0,Bmag])=0.3318  R²(E)=0.1577  gap=+0.1741
+  Axis B  sign_flips: 4/4  support=True
+
+  All outputs: outputs/
+  Runtime: 195.0s
