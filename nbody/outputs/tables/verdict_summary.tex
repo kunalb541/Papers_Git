@@ -1,0 +1,32 @@
+\begin{tabular}{lllrrrrl}
+\toprule
+Model & IC & $\epsilon$ & $r_{\rm CG8}$ & Best fine & $r_{\rm fine}$ & Gap & Verdict\\
+\midrule
+direct-isolated & bimodal & 0.02 & -0.950 & VelDisp & -0.478 & -0.472 & COARSE\\
+direct-isolated & bimodal & 0.05 & -0.975 & ClosePairs & -0.600 & -0.375 & COARSE\\
+direct-isolated & bimodal & 0.10 & -0.993 & kNN-all & -0.795 & -0.197 & COARSE\\
+direct-isolated & Hernquist & 0.02 & +0.313 & kNN-all & +0.639 & +0.193 & FINE\\
+direct-isolated & Hernquist & 0.05 & -0.022 & Pk-small & +0.405 & +0.178 & FINE\\
+direct-isolated & Hernquist & 0.10 & -0.798 & kNN-all & -0.786 & -0.013 & TIE\\
+direct-isolated & Plummer & 0.02 & +0.128 & VelDisp & -0.416 & +0.159 & FINE\\
+direct-isolated & Plummer & 0.05 & -0.341 & FoF-groups & +0.433 & +0.093 & FINE\\
+direct-isolated & Plummer & 0.10 & -0.904 & kNN-all & -0.790 & -0.114 & COARSE\\
+direct-isolated & cold-clumpy & 0.02 & -0.341 & FoF-groups & +0.521 & +0.180 & FINE\\
+direct-isolated & cold-clumpy & 0.05 & -0.322 & FoF-groups & +0.493 & +0.171 & FINE\\
+direct-isolated & cold-clumpy & 0.10 & -0.245 & ClosePairs & +0.597 & +0.258 & FINE\\
+\midrule
+PM-periodic & bimodal & 0.02 & -0.972 & FoF-groups & +0.466 & -0.506 & COARSE\\
+PM-periodic & bimodal & 0.05 & -0.972 & ClosePairs & -0.671 & -0.301 & COARSE\\
+PM-periodic & bimodal & 0.10 & -0.972 & kNN-all & -0.817 & -0.154 & COARSE\\
+PM-periodic & Hernquist & 0.02 & +0.261 & kNN-all & +0.622 & +0.174 & FINE\\
+PM-periodic & Hernquist & 0.05 & +0.261 & Pk-small & +0.481 & +0.033 & TIE\\
+PM-periodic & Hernquist & 0.10 & +0.261 & Pk-small & +0.481 & +0.033 & TIE\\
+PM-periodic & Plummer & 0.02 & +0.057 & VelDisp & -0.373 & +0.146 & FINE\\
+PM-periodic & Plummer & 0.05 & +0.057 & VelDisp & -0.373 & +0.146 & FINE\\
+PM-periodic & Plummer & 0.10 & +0.057 & VelDisp & -0.373 & +0.146 & FINE\\
+PM-periodic & cold-clumpy & 0.02 & -0.319 & FoF-groups & +0.278 & -0.040 & TIE\\
+PM-periodic & cold-clumpy & 0.05 & -0.319 & FoF-groups & +0.278 & -0.040 & TIE\\
+PM-periodic & cold-clumpy & 0.10 & -0.319 & ClosePairs & +0.602 & +0.283 & FINE\\
+\midrule
+\bottomrule
+\end{tabular}
