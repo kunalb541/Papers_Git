@@ -1,0 +1,371 @@
+\begin{thebibliography}{61}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ayala and Campbell(1974)]{Ayala1974}
+Francisco~J. Ayala and Cathryn~A. Campbell.
+\newblock Frequency-dependent selection.
+\newblock \emph{Annual Review of Ecology and Systematics}, 5:\penalty0
+  115--138, 1974.
+\newblock \doi{10.1146/annurev.es.05.110174.000555}.
+
+\bibitem[Barton and Keightley(2002)]{Barton2002}
+Nicholas~H. Barton and Peter~D. Keightley.
+\newblock Understanding quantitative genetic variation.
+\newblock \emph{Nature Reviews Genetics}, 3\penalty0 (1):\penalty0 11--21,
+  2002.
+
+\bibitem[Bollback et~al.(2008)Bollback, York, and Nielsen]{Bollback2008}
+Jonathan~P. Bollback, Thomas~L. York, and Rasmus Nielsen.
+\newblock Estimation of $2n_es$ from temporal allele frequency data.
+\newblock \emph{Genetics}, 179\penalty0 (1):\penalty0 497--502, 2008.
+
+\bibitem[Charlesworth(2009)]{Charlesworth2010}
+Brian Charlesworth.
+\newblock Effective population size and patterns of molecular evolution and
+  variation.
+\newblock \emph{Nature Reviews Genetics}, 10\penalty0 (3):\penalty0 195--205,
+  2009.
+
+\bibitem[Charlesworth(2006)]{Charlesworth2006}
+Deborah Charlesworth.
+\newblock Balancing selection and its effects on sequences in nearby genome
+  regions.
+\newblock \emph{PLoS Genetics}, 2\penalty0 (4):\penalty0 e64, 2006.
+\newblock \doi{10.1371/journal.pgen.0020064}.
+
+\bibitem[Chevin et~al.(2010)Chevin, Lande, and Mace]{Chevin2010}
+Luis-Miguel Chevin, Robert Lande, and Georgina~M. Mace.
+\newblock Adaptation, plasticity, and extinction in a changing environment:
+  Towards a predictive theory.
+\newblock \emph{PLoS Biology}, 8\penalty0 (4):\penalty0 e1000357, 2010.
+
+\bibitem[Crow and Kimura(1970)]{Crow1970}
+James~F. Crow and Motoo Kimura.
+\newblock \emph{An Introduction to Population Genetics Theory}.
+\newblock Harper \& Row, 1970.
+
+\bibitem[Crutchfield(2012)]{Crutchfield2012}
+James~P. Crutchfield.
+\newblock Between order and chaos.
+\newblock \emph{Nature Physics}, 8\penalty0 (1):\penalty0 17--24, 2012.
+
+\bibitem[Dawkins(1976)]{Dawkins1976}
+Richard Dawkins.
+\newblock \emph{The Selfish Gene}.
+\newblock Oxford University Press, 1976.
+
+\bibitem[{de Vladar} and Barton(2014)]{deVladar2011}
+Harold~P. {de Vladar} and Nicholas~H. Barton.
+\newblock The statistical mechanics of a polygenic character under stabilizing
+  selection, mutation and drift.
+\newblock \emph{Journal of the Royal Society Interface}, 11\penalty0
+  (95):\penalty0 20140467, 2014.
+
+\bibitem[Delph and Kelly(2014)]{Delph2016}
+Lynda~F. Delph and Janet~R. Kelly.
+\newblock On the importance of balancing selection in plants.
+\newblock \emph{New Phytologist}, 201\penalty0 (1):\penalty0 45--56, 2014.
+
+\bibitem[Ellner et~al.(2011)Ellner, Geber, and {Hairston Jr.}]{Ellner2011}
+Stephen~P. Ellner, Matthias Geber, and Nelson~G. {Hairston Jr.}
+\newblock Does rapid evolution matter? {Measuring} the rate of contemporary
+  evolution and its impacts on ecological dynamics.
+\newblock \emph{Ecology Letters}, 14\penalty0 (6):\penalty0 603--614, 2011.
+
+\bibitem[Falconer and Mackay(1996)]{Falconer1996}
+Douglas~S. Falconer and Trudy F.~C. Mackay.
+\newblock \emph{Introduction to Quantitative Genetics}.
+\newblock Longman, 4 edition, 1996.
+
+\bibitem[Fisher(1930)]{Fisher1930}
+R.~A. Fisher.
+\newblock \emph{The Genetical Theory of Natural Selection}.
+\newblock Clarendon Press, 1930.
+
+\bibitem[Foll et~al.(2015)Foll, Shim, and Jensen]{Foll2014}
+Matthieu Foll, H{\'e}l{\`e}ne Shim, and Jeffrey~D. Jensen.
+\newblock {WFABC}: A {Wright--Fisher} {ABC}-based approach for inferring
+  effective population sizes and selection coefficients from time-sampled data.
+\newblock \emph{Molecular Ecology Resources}, 15\penalty0 (1):\penalty0 87--98,
+  2015.
+
+\bibitem[Frank(1995)]{Frank1995}
+Steven~A. Frank.
+\newblock George price's contributions to evolutionary genetics.
+\newblock \emph{Journal of Theoretical Biology}, 175\penalty0 (3):\penalty0
+  373--388, 1995.
+
+\bibitem[Gardner(2008)]{Gardner2011}
+Andy Gardner.
+\newblock The price equation.
+\newblock \emph{Current Biology}, 18\penalty0 (5):\penalty0 R198--R202, 2008.
+
+\bibitem[Goddard and Hayes(2009)]{Goddard2010}
+Michael~E. Goddard and Ben~J. Hayes.
+\newblock Mapping genes for complex traits in domestic animals and their use in
+  breeding programmes.
+\newblock \emph{Nature Reviews Genetics}, 10\penalty0 (6):\penalty0 381--391,
+  2009.
+
+\bibitem[Gomulkiewicz and Holt(1995)]{Gomulkiewicz1995}
+Richard Gomulkiewicz and Robert~D. Holt.
+\newblock When does evolution by natural selection prevent extinction?
+\newblock \emph{Evolution}, 49\penalty0 (1):\penalty0 201--207, 1995.
+
+\bibitem[Gomulkiewicz and Shaw(2013)]{Gomulkiewicz2018}
+Richard Gomulkiewicz and Sarah~M. Shaw.
+\newblock Evolutionary rescue beyond the models.
+\newblock \emph{Philosophical Transactions of the Royal Society B},
+  368\penalty0 (1610):\penalty0 20120093, 2013.
+
+\bibitem[Gould(1977)]{Gould1979}
+Stephen~Jay Gould.
+\newblock \emph{Ontogeny and Phylogeny}.
+\newblock Harvard University Press, 1977.
+
+\bibitem[{Hairston Jr.} et~al.(2005){Hairston Jr.}, Ellner, Geber, Yoshida, and
+  Fox]{Hairston2005}
+Nelson~G. {Hairston Jr.}, Stephen~P. Ellner, Matthew~A. Geber, Toshinori
+  Yoshida, and Jessica~A. Fox.
+\newblock Rapid evolution and the convergence of ecological and evolutionary
+  time.
+\newblock \emph{Ecology Letters}, 8\penalty0 (10):\penalty0 1114--1127, 2005.
+
+\bibitem[Hamilton(1964)]{Hamilton1964}
+W.~D. Hamilton.
+\newblock The genetical evolution of social behaviour. {I}.
+\newblock \emph{Journal of Theoretical Biology}, 7\penalty0 (1):\penalty0
+  1--16, 1964.
+
+\bibitem[Hamilton(1975)]{Hamilton1975}
+W.~D. Hamilton.
+\newblock Innate social aptitudes of man: An approach from evolutionary
+  genetics.
+\newblock In Robin Fox, editor, \emph{Biosocial Anthropology}, pages 133--153.
+  Malaby Press, London, 1975.
+
+\bibitem[Hansen(2006)]{Hansen2006}
+Thomas~F. Hansen.
+\newblock The evolution of genetic architecture.
+\newblock \emph{Annual Review of Ecology, Evolution, and Systematics},
+  37:\penalty0 123--157, 2006.
+
+\bibitem[Hayes et~al.(2013)Hayes, Meuwissen, and Goddard]{Hayes2009}
+Ben~J. Hayes, Theo H.~E. Meuwissen, and Michael~E. Goddard.
+\newblock Prediction of total genetic value in livestock using dense marker
+  maps.
+\newblock \emph{Annual Review of Animal Biosciences}, 1:\penalty0 221--236,
+  2013.
+
+\bibitem[Hendry(2013)]{Hendry2016}
+Andrew~P. Hendry.
+\newblock Eco-evolutionary dynamics.
+\newblock In Jonathan~B. Losos et~al., editors, \emph{The Princeton Guide to
+  Evolution}, pages 317--325. Princeton University Press, Princeton, 2013.
+
+\bibitem[Hoel et~al.(2013)Hoel, Albantakis, and Tononi]{Hoel2013}
+Erik~P. Hoel, Larissa Albantakis, and Giulio Tononi.
+\newblock Quantifying causal emergence shows that macro can beat micro.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
+  (49):\penalty0 19790--19795, 2013.
+
+\bibitem[Israeli and Goldenfeld(2006)]{IsraeliGoldenfeld2006}
+Naama Israeli and Nigel Goldenfeld.
+\newblock Coarse-graining of cellular automata, emergence, and the
+  predictability of complex systems.
+\newblock \emph{Physical Review E}, 73\penalty0 (2):\penalty0 026203, 2006.
+
+\bibitem[Kerr and Godfrey-Smith(2002)]{Kerr2002}
+Benjamin Kerr and Peter Godfrey-Smith.
+\newblock Individualist and multi-level perspectives on selection in structured
+  populations.
+\newblock \emph{Biology and Philosophy}, 17\penalty0 (4):\penalty0 477--517,
+  2002.
+
+\bibitem[Kingman(1982)]{Kingman1982}
+J.~F.~C. Kingman.
+\newblock The coalescent.
+\newblock \emph{Stochastic Processes and their Applications}, 13\penalty0
+  (3):\penalty0 235--248, 1982.
+
+\bibitem[Krakauer et~al.(2020)Krakauer, Ay, Flack, and Mitchell]{Krakauer2020}
+David~C. Krakauer, Nihat Ay, Jessica Flack, and Melanie~J. Mitchell.
+\newblock The information theory of individuality.
+\newblock \emph{Theory in Biosciences}, 139\penalty0 (2):\penalty0 209--223,
+  2020.
+
+\bibitem[Laland et~al.(2011)Laland, Sterelny, Odling-Smee, Hoppitt, and
+  Uller]{Laland2011}
+Kevin~N. Laland, Kim Sterelny, John Odling-Smee, William Hoppitt, and Tobias
+  Uller.
+\newblock Cause and effect in biology revisited: Is {Mayr}'s
+  proximate--ultimate dichotomy still useful?
+\newblock \emph{Science}, 334\penalty0 (6062):\penalty0 1512--1516, 2011.
+\newblock \doi{10.1126/science.1210879}.
+
+\bibitem[Lande(1979)]{Lande1979}
+Russell Lande.
+\newblock Quantitative genetic analysis of multivariate evolution, applied to
+  brain:body size allometry.
+\newblock \emph{Evolution}, 33\penalty0 (1):\penalty0 402--416, 1979.
+
+\bibitem[L{\"a}ssig et~al.(2017)L{\"a}ssig, Mustonen, and Walczak]{Nosil2017}
+Michael L{\"a}ssig, Ville Mustonen, and Aleksandra~M. Walczak.
+\newblock Predicting evolution.
+\newblock \emph{Nature Ecology \& Evolution}, 1:\penalty0 0077, 2017.
+\newblock \doi{10.1038/s41559-017-0077}.
+
+\bibitem[Lynch and Walsh(1998)]{Lynch1998}
+Michael Lynch and Bruce Walsh.
+\newblock \emph{Genetics and Analysis of Quantitative Traits}.
+\newblock Sinauer, 1998.
+
+\bibitem[Meuwissen et~al.(2001)Meuwissen, Hayes, and Goddard]{Meuwissen2001}
+Theo H.~E. Meuwissen, Ben~J. Hayes, and Michael~E. Goddard.
+\newblock Prediction of total genetic value using genome-wide dense marker
+  maps.
+\newblock \emph{Genetics}, 157\penalty0 (4):\penalty0 1819--1829, 2001.
+
+\bibitem[Moran(1958)]{Moran1958}
+P.~A.~P. Moran.
+\newblock Random processes in genetics.
+\newblock \emph{Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 54\penalty0 (1):\penalty0 60--71, 1958.
+
+\bibitem[Nowak(2006)]{Nowak2006}
+Martin~A. Nowak.
+\newblock Five rules for the evolution of cooperation.
+\newblock \emph{Science}, 314\penalty0 (5805):\penalty0 1560--1563, 2006.
+
+\bibitem[Odling-Smee et~al.(2003)Odling-Smee, Laland, and
+  Feldman]{Odling-Smee2003}
+F.~John Odling-Smee, Kevin~N. Laland, and Marcus~W. Feldman.
+\newblock \emph{Niche Construction: The Neglected Process in Evolution}.
+\newblock Princeton University Press, 2003.
+
+\bibitem[Okasha(2006)]{Okasha2006}
+Samir Okasha.
+\newblock \emph{Evolution and the Levels of Selection}.
+\newblock Oxford University Press, 2006.
+
+\bibitem[Orr(2009)]{Orr2009}
+H.~Allen Orr.
+\newblock Fitness and its role in evolutionary genetics.
+\newblock \emph{Nature Reviews Genetics}, 10\penalty0 (8):\penalty0 531--539,
+  2009.
+\newblock \doi{10.1038/nrg2603}.
+
+\bibitem[Pearl(2009)]{Pearl2009}
+Judea Pearl.
+\newblock \emph{Causality}.
+\newblock Cambridge University Press, 2 edition, 2009.
+
+\bibitem[Pelletier et~al.(2009)Pelletier, Garant, and Hendry]{Pelletier2009}
+Fanny Pelletier, David Garant, and Andrew~P. Hendry.
+\newblock Eco-evolutionary dynamics.
+\newblock \emph{Philosophical Transactions of the Royal Society B},
+  364\penalty0 (1523):\penalty0 1483--1489, 2009.
+
+\bibitem[Pigliucci(2001)]{Pigliucci2001}
+Massimo Pigliucci.
+\newblock \emph{Phenotypic Plasticity: Beyond Nature and Nurture}.
+\newblock Johns Hopkins University Press, Baltimore, 2001.
+
+\bibitem[Post and Palkovacs(2009)]{Post2009}
+David~M. Post and Erik~P. Palkovacs.
+\newblock Eco-evolutionary feedbacks in community and ecosystem ecology:
+  Interactions between the ecological theatre and the evolutionary play.
+\newblock \emph{Philosophical Transactions of the Royal Society B},
+  364\penalty0 (1523):\penalty0 1629--1640, 2009.
+
+\bibitem[Price(1970)]{Price1970}
+George~R. Price.
+\newblock Selection and covariance.
+\newblock \emph{Nature}, 227:\penalty0 520--521, 1970.
+
+\bibitem[Schoener(2011)]{Schoener2011}
+Thomas~W. Schoener.
+\newblock The newest synthesis: Understanding the interplay of evolutionary and
+  ecological dynamics.
+\newblock \emph{Science}, 331\penalty0 (6016):\penalty0 426--429, 2011.
+
+\bibitem[Sober and Wilson(1994)]{Sober1994}
+Elliott Sober and David~Sloan Wilson.
+\newblock A critical review of philosophical work on the units of selection
+  problem.
+\newblock \emph{Philosophy of Science}, 61\penalty0 (4):\penalty0 534--555,
+  1994.
+
+\bibitem[Spirtes et~al.(2000)Spirtes, Glymour, and Scheines]{Spirtes2000}
+Peter Spirtes, Clark Glymour, and Richard Scheines.
+\newblock \emph{Causation, Prediction, and Search}.
+\newblock MIT Press, 2 edition, 2000.
+
+\bibitem[Tajima(1983)]{Tajima1983}
+Fumio Tajima.
+\newblock Evolutionary relationship of {DNA} sequences in finite populations.
+\newblock \emph{Genetics}, 105\penalty0 (2):\penalty0 437--460, 1983.
+
+\bibitem[Traulsen and Nowak(2006)]{Traulsen2006}
+Arne Traulsen and Martin~A. Nowak.
+\newblock Evolution of cooperation by multilevel selection.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 103\penalty0
+  (29):\penalty0 10952--10955, 2006.
+
+\bibitem[Turelli and Barton(1994)]{Turelli1994}
+Michael Turelli and Nicholas~H. Barton.
+\newblock Genetic and statistical analyses of strong selection on polygenic
+  traits: {What}, me normal?
+\newblock \emph{Genetics}, 138\penalty0 (3):\penalty0 913--941, 1994.
+
+\bibitem[West et~al.(2008)West, Griffin, and Gardner]{West2007}
+Stuart~A. West, Ashleigh~S. Griffin, and Andy Gardner.
+\newblock Social semantics: How useful has group selection been?
+\newblock \emph{Journal of Evolutionary Biology}, 21\penalty0 (2):\penalty0
+  374--385, 2008.
+
+\bibitem[West-Eberhard(2003)]{West-Eberhard2003}
+Mary~Jane West-Eberhard.
+\newblock \emph{Developmental Plasticity and Evolution}.
+\newblock Oxford University Press, Oxford, 2003.
+
+\bibitem[Williams(1966)]{Williams1966}
+George~C. Williams.
+\newblock \emph{Adaptation and Natural Selection}.
+\newblock Princeton University Press, 1966.
+
+\bibitem[Wilson(1975)]{Wilson1975}
+David~Sloan Wilson.
+\newblock A theory of group selection.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 72\penalty0
+  (1):\penalty0 143--146, 1975.
+
+\bibitem[Woodward(2003)]{Woodward2003}
+James Woodward.
+\newblock \emph{Making Things Happen}.
+\newblock Oxford University Press, 2003.
+
+\bibitem[Wray et~al.(2010)Wray, Yang, Goddard, and Visscher]{Wray2013}
+Naomi~R. Wray, Jian Yang, Michael~E. Goddard, and Peter~M. Visscher.
+\newblock The genetic interpretation of area under the {ROC} curve in genomic
+  profiling.
+\newblock \emph{PLoS Genetics}, 6\penalty0 (2):\penalty0 e1000864, 2010.
+
+\bibitem[Wright(1931)]{Wright1931}
+Sewall Wright.
+\newblock Evolution in mendelian populations.
+\newblock \emph{Genetics}, 16:\penalty0 97--159, 1931.
+
+\bibitem[Yoshida et~al.(2003)Yoshida, Jones, Ellner, Fussmann, and {Hairston
+  Jr.}]{Yoshida2003}
+Toshinori Yoshida, Larry~E. Jones, Stephen~P. Ellner, George~F. Fussmann, and
+  Nelson~G. {Hairston Jr.}
+\newblock Rapid evolution drives ecological dynamics in a predator--prey
+  system.
+\newblock \emph{Nature}, 424:\penalty0 303--306, 2003.
+
+\end{thebibliography}
