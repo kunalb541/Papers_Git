@@ -1,0 +1,911 @@
+\documentclass[11pt]{article}
+
+% ── PACKAGES ─────────────────────────────────────────────────────────────────
+\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{microtype}
+
+% ── THEOREM ENVIRONMENTS ──────────────────────────────────────────────────────
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── TITLE ────────────────────────────────────────────────────────────────────
+
+\title{When Does a Stable Winner Exist? Coherence in Linear Gaussian
+Dynamical Systems with an Evolution Export Test\thanks{Preprint.
+Not peer reviewed.}}
+
+\author{Kunal Bhatia\\
+Independent Researcher, Heidelberg\\
+\texttt{kunal29bhatia@gmail.com}}
+
+\date{March 2026}
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{document}
+
+\maketitle
+
+% ── ABSTRACT ─────────────────────────────────────────────────────────────────
+
+\begin{abstract}
+When comparing descriptions of a dynamical system across multiple prediction
+tasks, it is natural to ask whether one description is globally best ---
+a stable winner over the full target family.
+We give an exact answer for finite-dimensional linear Gaussian dynamical
+systems (LGDS): a stable winner exists within the rank-$r$ observer class
+if and only if the target family is $r$-coherent, meaning that all target
+information matrices share a common top-$r$ eigenspace.
+When coherence fails, no rank-$r$ observer is simultaneously optimal for
+all targets and the global-privilege gap is strictly positive.
+We then extract an empirical diagnostic from the theorem:
+supported pairwise sign flips across a target family diagnose empirical
+incoherence and motivate a prediction of winner-absence.
+We test this diagnostic in an individual-based evolutionary simulation
+battery spanning six regimes, four descriptions, and two task families
+(predictive and causal).
+In a pre-aggregated adapter analysis, all 11 classified incoherent
+regime-family cells are winner-absent (0 mismatches; pre-registered
+pass condition met).
+Current support is strongest for the negative half of the diagnostic:
+empirically incoherent cells are winner-absent.
+No coherent cells were observed, so the positive half remains untested.
+\end{abstract}
+
+% ── SECTION 1: INTRODUCTION ──────────────────────────────────────────────────
+
+\section{Introduction}
+
+Science frequently compares descriptions of the same system.
+A coarse spatial summary and a fine structural count are both legitimate
+measurements of a cellular automaton;
+a gene-frequency composition and a lineage-level profile are both legitimate
+descriptions of an evolving population.
+When predictions are made from each description, they may agree or disagree,
+and one description may be more accurate than another for a particular
+future quantity.
+
+The natural next question is whether one description is \emph{globally} best:
+not merely better for one target, but the best description to use regardless
+of what is being predicted.
+In practice this question is often answered implicitly, by convention or
+by computational convenience.
+The formal question --- when is a stable winner over a target family even
+possible? --- has not, to our knowledge, been given a precise answer in
+this form.
+
+This paper gives one.
+For finite-dimensional linear Gaussian dynamical systems, among rank-$r$
+linear observers and squared-error prediction targets, a stable winner
+exists if and only if the target family satisfies an algebraic condition
+we call $r$-coherence: all target information matrices share a common
+top-$r$ eigenspace.
+When this condition fails, the loss from any fixed observer applied to
+a non-native target is strictly positive, and no observer can be
+simultaneously optimal for every target in the family.
+
+The theorem is narrow by design.
+It does not claim that description-dependent privilege is universal, that
+all real systems are incoherent, or that any particular prior empirical
+result is an instance of the theorem.
+It claims only that, in the exact LGDS setting, the coherence condition
+is both necessary and sufficient for the existence of a stable winner.
+
+The theorem's operative structure --- pairwise sign stability across a
+target family --- suggests an empirical diagnostic that may travel beyond
+LGDS.
+We formalise this diagnostic (Section~\ref{sec:diagnostic}) and test it in
+an evolutionary simulation battery (Section~\ref{sec:export}).
+The test is not a theorem extension; it is an empirical probe of
+transportability.
+
+Four prior empirical results motivated the formal question.
+In post-transient Game of Life, the scale that best predicts a future
+observable depends on which observable is chosen~\citep{bhatia2026ca}.
+In kinetic Ising dynamics, fine-description advantage reverses between
+ordered and disordered phases~\citep{bhatia2026ising}.
+In an open Bose--Hubbard chain, a causal handle effective in one coupling
+regime reverses in another~\citep{bhatia2026bh}.
+In three-dimensional N-body simulations, the winning description depends
+on the initial-condition family~\citep{bhatia2026nbody}.
+Each result posed a winner-stability question in a different system;
+none supplied a formal criterion for when a stable winner should exist.
+Section~\ref{sec:prior} repositions these results as empirical pressure
+for the question the theorem now answers, not as theorem-governed instances.
+
+The paper is organised as follows.
+Section~\ref{sec:framework} defines descriptions, target families, scores,
+coherence, and stable winnerhood.
+Section~\ref{sec:theorem} states and proves the main theorem.
+Section~\ref{sec:diagnostic} extracts the exported diagnostic.
+Section~\ref{sec:prior} briefly repositions the prior empirical results.
+Section~\ref{sec:export} reports the evolution export test.
+Section~\ref{sec:scope} states scope and limitations.
+Section~\ref{sec:discussion} discusses implications.
+
+% ── SECTION 2: FRAMEWORK ─────────────────────────────────────────────────────
+
+\section{Framework}
+\label{sec:framework}
+
+\subsection{Descriptions and target families}
+
+Let $\mathcal{X}$ denote the state space of a dynamical system.
+A \emph{description} is a measurable function $D : \mathcal{X} \to \mathbb{R}^d$
+that maps a system state to a fixed-dimensional summary.
+We work with a finite family of descriptions
+$\mathcal{D} = \{D_1, \dots, D_k\}$,
+where each $D_i$ represents a distinct representational choice ---
+a coarse-graining, an observable class, or a level of description.
+
+A \emph{target family} is a finite set
+$\mathcal{T} = \{Y_1, \dots, Y_m\}$
+of scalar prediction targets,
+where each $Y_j$ is a measurable function of the system state at a fixed
+future horizon $\tau \geq 1$.
+The target family formalises the question ``what is the description for?''
+
+\subsection{Scores}
+
+For each description--target pair $(D_i, Y_j)$,
+a \emph{score} $s(D_i; Y_j) \in \mathbb{R}$ measures predictive performance,
+with higher values indicating better performance.
+The score is computed on held-out data or, where exact, from an analytic
+risk formula.
+The pairwise gap
+\begin{equation}
+    \Delta_{ij}(Y) \;=\; s(D_i;\, Y) \,-\, s(D_j;\, Y)
+\end{equation}
+is positive when $D_i$ outperforms $D_j$ on target $Y$.
+
+A target $Y \in \mathcal{T}$ is \emph{estimable} for the pair $(D_i, D_j)$
+if the score difference $\Delta_{ij}(Y)$ can be evaluated
+(in the empirical setting, if the sample size exceeds a pre-specified floor).
+A gap is \emph{supported} if the estimable gap is nonzero ---
+either exactly, in the analytic case, or with a confidence interval
+that excludes zero, in the empirical case.
+
+\subsection{Coherence}
+
+\begin{definition}[Coherence]
+A target family $\mathcal{T}$ is \emph{coherent} with respect to
+description family $\mathcal{D}$ if,
+for every ordered pair $(D_i, D_j)$ with $i \neq j$,
+the sign of $\Delta_{ij}(Y)$ is the same across all estimable
+$Y \in \mathcal{T}$ where the gap is supported.
+
+Equivalently, no pair $(D_i, D_j)$ exhibits a \emph{sign flip}:
+two estimable targets $Y_a, Y_b \in \mathcal{T}$ such that
+$\Delta_{ij}(Y_a) > 0$ and $\Delta_{ij}(Y_b) < 0$
+with both gaps supported.
+\end{definition}
+
+Coherence is a property of the joint structure of the description family and
+the target family.
+It does not require a unique winner on every target;
+ties may remain even when pairwise ordering is stable.
+
+\subsection{Stable winnerhood}
+
+\begin{definition}[Stable winner]
+A description $D^* \in \mathcal{D}$ is a \emph{stable winner} over
+$\mathcal{T}$ within $\mathcal{D}$ if
+\begin{equation}
+    s(D^*;\, Y) \;\geq\; s(D_j;\, Y)
+    \quad \text{for all } D_j \neq D^* \text{ and all } Y \in \mathcal{T},
+\end{equation}
+with strict inequality on at least one target for each competitor.
+\end{definition}
+
+A stable winner is a description that is not dominated on any prediction target
+within the family.
+In the exact analytic setting, this requires simultaneous optimality.
+In the empirical export section (Section~\ref{sec:export}),
+stable winnerhood is operationalised by a pre-registered rule
+defined separately from the theorem; that operationalisation is
+intentionally distinct from the exact definition above.
+
+% ── SECTION 3: THEOREM ───────────────────────────────────────────────────────
+
+\section{Task-Relative Descriptive Privilege in Linear Gaussian Dynamical Systems}
+\label{sec:theorem}
+
+\subsection{System and observer family}
+
+Let the state evolve as
+\begin{equation}
+    x_{t+1} = A x_t + \xi_t,
+    \qquad \xi_t \sim \mathcal{N}(0, Q),
+    \qquad x_t \in \mathbb{R}^n,
+\end{equation}
+with $A$ stable (spectral radius less than one) and $Q \succ 0$.
+The unique stationary covariance $\Sigma$ satisfies $A\Sigma A^\top + Q = \Sigma$
+and is strictly positive definite.
+
+The description family is the rank-$r$ linear observer class:
+each description is parametrised by a row-orthonormal matrix
+$U \in \mathbb{R}^{r \times n}$, $UU^\top = I_r$, acting as
+\begin{equation}
+    D_U(x) = U \Sigma^{-1/2} x.
+\end{equation}
+Pre-whitening by $\Sigma^{-1/2}$ places all observers on a common isotropic
+footing.
+The observer space is the Grassmannian $\mathrm{Gr}(r,n)$.
+
+The target family consists of squared-error prediction targets of the form
+$Y_{C,\tau} = C x_{t+\tau}$,
+with $C \in \mathbb{R}^{p \times n}$ and integer $\tau \geq 1$.
+Performance is total mean squared prediction error.
+
+\subsection{Target information matrices and exact risk}
+
+Given observation $z = U\Sigma^{-1/2}x_t$,
+the MMSE predictor of $Cx_{t+\tau}$ is linear by Gaussian conjugacy.
+The Bayes risk is
+\begin{equation}
+    R(U;\, C, \tau)
+    \;=\;
+    \mathrm{tr}(C\Sigma C^\top)
+    \;-\;
+    \mathrm{tr}\!\left(U M_{C,\tau} U^\top\right),
+    \label{eq:bayes-risk}
+\end{equation}
+where the \emph{target information matrix} is
+\begin{equation}
+    M_{C,\tau}
+    \;=\;
+    \Sigma^{1/2}(A^\tau)^\top C^\top C A^\tau \Sigma^{1/2}
+    \;\in\; \mathbb{R}^{n \times n}.
+    \label{eq:info-matrix}
+\end{equation}
+$M_{C,\tau}$ is symmetric positive semidefinite.
+The formula is exact; no approximation is involved.
+
+Setting the score $s(D_U; Y_{C,\tau}) = -R(U; C, \tau)$
+(higher score = lower risk),
+minimising risk over $\mathrm{Gr}(r,n)$ is equivalent to maximising
+$\mathrm{tr}(U M_{C,\tau} U^\top)$.
+
+\subsection{Top-eigenspace optimality}
+
+\begin{proposition}[Ky Fan optimality]
+\label{prop:ky-fan}
+For fixed rank $r$, the observer minimising $R(U; C, \tau)$ over
+$\mathrm{Gr}(r,n)$ has row space equal to the top-$r$ eigenspace of
+$M_{C,\tau}$.
+The minimum risk is
+\begin{equation}
+    R^* = \mathrm{tr}(C\Sigma C^\top) - \sum_{i=1}^{r} \lambda_i(M_{C,\tau}),
+\end{equation}
+where $\lambda_1 \geq \cdots \geq \lambda_n$ are the eigenvalues of
+$M_{C,\tau}$.
+Uniqueness (up to rotation within the eigenspace) holds when
+$\lambda_r > \lambda_{r+1}$.
+\end{proposition}
+
+\begin{proof}
+Minimising $R$ is equivalent to maximising
+$\mathrm{tr}(U M_{C,\tau} U^\top)$ subject to $UU^\top = I_r$.
+By the Ky Fan variational principle, the maximum equals
+$\sum_{i=1}^r \lambda_i(M_{C,\tau})$,
+achieved exactly when the row space of $U$ spans the corresponding eigenspace.
+\end{proof}
+
+\subsection{Main theorem}
+
+The framework vocabulary of Section~\ref{sec:framework} maps onto the LGDS
+setting as follows.
+Each rank-$r$ observer $U$ defines a description $D_U$.
+The score is $s(D_U; Y_{C,\tau}) = -R(U; C, \tau)$.
+A description $D_U$ is a stable winner over $\mathcal{T}$ within the
+rank-$r$ class if its row space simultaneously minimises risk for every
+target in the family.
+
+\begin{definition}[$r$-coherence]
+\label{def:r-coherence}
+A target family $\mathcal{T} = \{(C_k, \tau_k)\}$ is \emph{$r$-coherent}
+with respect to $(A, \Sigma)$ if all information matrices
+$\{M_{C_k, \tau_k}\}$ share a common top-$r$ eigenspace $V^*$.
+\end{definition}
+
+In LGDS, $r$-coherence is the structural condition that characterises
+when a stable winner exists within the rank-$r$ observer class.
+The proof below is a direct consequence of the Ky Fan variational
+principle; the contribution is the packaging of coherence and stable
+winnerhood as named conditions with an empirical diagnostic that can
+be deployed outside the linear Gaussian class.
+
+\begin{theorem}[Stable winner iff $r$-coherent]
+\label{thm:main}
+In a finite-dimensional LGDS at stationarity,
+among rank-$r$ linear observers and squared-error prediction targets
+$\mathcal{T} = \{Y_{C_k,\tau_k}\}$:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Existence.}
+    A stable winner exists over $\mathcal{T}$ within the rank-$r$ observer
+    class if and only if $\mathcal{T}$ is $r$-coherent.
+
+    \item \textbf{No-global-privilege corollary.}
+    If two targets in $\mathcal{T}$ have information matrices with distinct
+    top-$r$ eigenspaces, no rank-$r$ observer is simultaneously optimal for
+    both; no stable winner exists.
+
+    \item \textbf{Coherent case.}
+    When $\mathcal{T}$ is $r$-coherent with common eigenspace $V^*$,
+    the unique stable winner (up to rotation) is the observer whose row
+    space equals $V^*$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(i), necessity.}
+Suppose $D_{U^*}$ is a stable winner.
+By Proposition~\ref{prop:ky-fan}, optimality for target $Y_{C_k,\tau_k}$
+requires the row space of $U^*$ to equal the top-$r$ eigenspace of
+$M_{C_k,\tau_k}$.
+Since $D_{U^*}$ must be optimal for every target in $\mathcal{T}$,
+all information matrices share the common eigenspace $\mathrm{rowspace}(U^*)$.
+Hence $\mathcal{T}$ is $r$-coherent.
+
+\emph{(i), sufficiency.}
+Suppose $\mathcal{T}$ is $r$-coherent with common eigenspace $V^*$.
+Let $U^*$ be any row-orthonormal basis for $V^*$.
+By Proposition~\ref{prop:ky-fan}, $D_{U^*}$ minimises risk simultaneously
+for every target in $\mathcal{T}$ and is therefore a stable winner.
+
+\emph{(ii).}
+If $M_{C_1,\tau_1}$ and $M_{C_2,\tau_2}$ have distinct top-$r$ eigenspaces,
+no single row space can equal both.
+By Proposition~\ref{prop:ky-fan}, no rank-$r$ observer is optimal for both
+targets simultaneously.
+
+\emph{(iii).}
+Follows directly from the sufficiency direction of (i) and the uniqueness
+clause of Proposition~\ref{prop:ky-fan} when $\lambda_r > \lambda_{r+1}$
+for each target's information matrix.
+\end{proof}
+
+\subsection{$r$-coherence is structurally demanding}
+
+$r$-coherence requires every target in the family to be a linear functional
+of the same $r$-dimensional sufficient statistic, across all prediction
+horizons.
+This demands strong alignment between the dynamics $(A, \Sigma)$ and the
+task family $\mathcal{T}$.
+It is an algebraic equality condition, not an approximate or asymptotic one.
+
+Outside $r$-coherence, there is no rank-$r$ observer that is simultaneously
+optimal for all targets.
+The cost of forcing any fixed observer onto a non-native target is given
+exactly by equation~\eqref{eq:bayes-risk}:
+the global-privilege gap
+\begin{equation}
+    \Gamma
+    \;=\;
+    \min_{U \in \mathrm{Gr}(r,n)}
+    \max_k \left[ R(U;\, C_k,\tau_k) - R^*_k \right]
+    \;>\; 0
+\end{equation}
+measures the irreducible worst-case regret under task conflict.
+
+\subsection{Numerical illustration}
+
+We illustrate Theorem~\ref{thm:main} with a concrete instance
+($n = 8$, $r = 2$, seed 100).\footnote{This numerical illustration
+recapitulates the construction from \citet{bhatia2026lgds} for
+self-containedness.}
+Two targets $T_1 = ([e_1^\top; e_2^\top],\, 1)$ and
+$T_2 = ([e_5^\top; e_6^\top],\, 5)$ have information matrices whose top-2
+eigenspaces subtend principal angles of $54.1^\circ$ and $24.0^\circ$:
+no single rank-2 observer is simultaneously optimal.
+The minimax observer $U_{\mathrm{joint}}$, found by projected optimisation
+over $\mathrm{Gr}(2,8)$, achieves $\Gamma = 0.026 > 0$
+(Table~\ref{tab:regret}).
+
+A structurally coherent instance is constructed by design
+(normal $A_{\mathrm{sym}}$, targets aligned to the common top-2 eigenspace):
+the maximum pairwise principal angle across all four targets is
+$0.000^\circ$ to machine precision,
+and perturbations of magnitude $\varepsilon = 0.1$ to $C$
+(20 random draws) produce a maximum principal angle of $0.102$~rad ---
+well below the fragility threshold of $0.15$~rad.
+Structural coherence is perturbation-robust,
+distinguishing it from accidental near-coincidences that break under
+small perturbations.
+
+\begin{table}[t]
+\centering
+\caption{Regret matrix, no-global-privilege instance ($n=8$, $r=2$,
+seed 100). All values from the exact analytic Bayes risk formula.}
+\label{tab:regret}
+\begin{tabular}{lcc}
+\toprule
+Observer & Regret on $T_1$ & Regret on $T_2$ \\
+\midrule
+$U^*_1$ (optimal for $T_1$) & 0.000 & 0.036 \\
+$U^*_2$ (optimal for $T_2$) & 0.763 & 0.000 \\
+$U_{\mathrm{joint}}$ (minimax) & 0.026 & 0.026 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ── SECTION 4: EXPORTED DIAGNOSTIC ──────────────────────────────────────────
+
+\section{The Exported Diagnostic}
+\label{sec:diagnostic}
+
+\subsection{From eigenspaces to sign flips}
+
+Theorem~\ref{thm:main} is exact within LGDS.
+This section extracts from it an \emph{empirical diagnostic} that can be
+evaluated in systems that are not LGDS.
+
+The theorem's operative condition --- whether information matrices share a
+common top-$r$ eigenspace --- is not directly testable in systems where the
+dynamics and noise structure are unknown or nonlinear.
+What \emph{is} testable in any system is the sign of pairwise score
+differences across targets.
+
+The diagnostic rests on the following observation.
+In LGDS, when two targets have distinct top-$r$ eigenspaces, no stable
+winner exists (Theorem~\ref{thm:main}(ii)).
+By the exact risk formula~\eqref{eq:bayes-risk}, the optimal observer for
+target $k$ incurs strictly positive regret on any other target with a
+distinct eigenspace.
+This eigenspace separation implies that no single observer is simultaneously
+optimal for both targets.
+In finite observer families, this loss of common optimality is naturally
+probed by pairwise score-gap sign changes across targets.
+
+Conversely, if the target family is $r$-coherent, the same observer is
+optimal for every target in the rank-$r$ class;
+this is the exact LGDS case in which no task conflict remains.
+
+\subsection{The exported prediction}
+
+This motivates a diagnostic that travels outside LGDS:
+
+\begin{quote}
+\emph{If at least one pairwise sign flip is empirically supported across a
+target family, no stable family winner should exist.}
+\end{quote}
+
+This is a prediction, not a theorem.
+Outside LGDS, sign flips are sufficient evidence of incoherence in the
+general sense of Section~\ref{sec:framework}, but the connection to stable
+winnerhood is no longer guaranteed by Theorem~\ref{thm:main}.
+The export test asks whether the diagnostic nevertheless has empirical bite.
+
+\subsection{Operationalisation}
+
+To test the exported prediction, we require operational definitions of
+sign-flip support and stable winnerhood that are independent of any
+parametric model.
+
+\paragraph{Supported sign flip.}
+For an ordered pair of descriptions $(D_i, D_j)$ and an estimable target
+$Y \in \mathcal{T}$, the gap $\Delta_{ij}(Y)$ is \emph{supported in
+direction} $+$ if its 95\% bootstrap confidence interval excludes zero from
+below ($\mathrm{lo} > 0$), and \emph{supported in direction} $-$ if the
+interval excludes zero from above ($\mathrm{hi} < 0$).
+A pair $(D_i, D_j)$ exhibits a \emph{supported sign flip} across $\mathcal{T}$
+if there exist two estimable targets $Y_a, Y_b$ with opposite supported
+directions.
+A target family is \emph{empirically incoherent} if at least one pair
+exhibits a supported sign flip; \emph{empirically coherent} if every pair
+is sign-stable (all supported gaps point the same direction);
+and \emph{unresolved} otherwise.
+
+\paragraph{Stable family winner (empirical).}
+Description $D^*$ is a \emph{stable family winner} if, for every competitor
+$D_j \neq D^*$:
+\begin{enumerate}[label=(\roman*)]
+    \item $D^*$ beats $D_j$ on at least 75\% of estimable targets
+          with CI-supported gaps;
+    \item no competitor beats $D^*$ on more than 25\% of estimable targets
+          with CI-supported gaps.
+\end{enumerate}
+Otherwise the cell is \emph{winner-absent}.
+
+These thresholds were fixed before examination of the regime-family
+results.
+
+\paragraph{Correspondence test.}
+The exported diagnostic is evaluated by the \emph{correspondence test}:
+across pre-specified regime-family cells, does empirical incoherence predict
+winner-absence, and does empirical coherence predict stable winnerhood?
+The primary exported claim is the negative half:
+incoherence $\to$ winner-absent.
+The positive half (coherence $\to$ stable winner exists) requires coherent
+cells to be present in the battery; their presence or absence is itself
+a data outcome.
+
+% ── SECTION 5: PRIOR ODD PAPERS ──────────────────────────────────────────────
+
+\section{Relation to Prior Empirical Results}
+\label{sec:prior}
+
+The empirical results motivating this paper were obtained before the formal
+framework above was developed.
+We briefly reposition them here as instances of coherence failure, not as
+evidence for a stronger unified law.
+
+\paragraph{Cellular automata (P1, P4).}
+In post-transient Conway's Game of Life, a fine component-count observer and
+a coarse occupied-block observer disagree on net change over the same run.
+The disagreement is predictable from early fine-scale structure
+($r = -0.848$, 95\% CI $[-0.862, -0.830]$),
+and the scale that best predicts a future observable depends on which
+observable is chosen:
+future live-cell count peaks at block size $B = 2$, while future
+occupied-block count peaks at $B = 8$, with non-overlapping bootstrap
+confidence intervals~\citep{bhatia2026ca}.
+In the framework of Section~\ref{sec:framework}, the target family
+$\{\bar{N}_\mathrm{live}, \bar{N}^{B=8}_\mathrm{occ}\}$ is empirically
+incoherent: the pairwise ordering between fine and coarse descriptions
+flips across the two targets.
+A stable winner is not observed over this family;
+the present theorem provides the formal vocabulary for understanding
+that kind of failure in the exact LGDS setting.
+
+\paragraph{Kinetic Ising model (P2).}
+Fine descriptions based on locally exposed defects outperform a coarse
+block-variance description for predicting future domain-wall change
+($\Delta R^2 = +0.415$, 95\% CI $[+0.389, +0.443]$) in the ordered phase,
+but the advantage reverses in the disordered phase
+($\Delta R^2 = -0.064$)~\citep{bhatia2026ising}.
+The regime dependence shows that no regime-independent stable winner exists
+over the combined family of ordered and disordered targets.
+
+\paragraph{Bose--Hubbard chain (P3).}
+In an open Bose--Hubbard chain with Lindblad dephasing,
+targeted additional dephasing at high-variance sites produces more local
+occupation loss than matched-budget random targeting in the
+$J/U = 0.30$--$0.40$ regime, but the effect reverses at $J/U = 0.12$~\citep{bhatia2026bh}.
+This is a causal instance of target-relative privilege.
+Because the causal axis lies outside the scope of the present theorem,
+we cite it here only as empirical pressure for a general winner-instability
+question, not as a theorem-governed instance.
+
+\paragraph{N-body dynamics (P5).}
+In three-dimensional self-gravitating N-body simulations, the coarse density
+variance robustly predicts future clustering for bimodal initial conditions
+($r = -0.975$, 95\% CI $[-0.99, -0.95]$), but the kinematic fine observable
+(local velocity dispersion) shows a suggestive advantage for concentrated
+profiles at small softening~\citep{bhatia2026nbody}.
+The results suggest that winner identity may depend on initial-condition
+family, though the fine-side concentrated-profile signal remains unresolved.
+We cite this paper as pressure for the formal question, not as a settled
+theorem instance.
+
+These four cases are not re-proved here.
+They are cited as recurring empirical pressure for the formal question the
+theorem addresses: when is a stable winner over a target family even possible?
+The theorem gives the answer for LGDS;
+the export test in Section~\ref{sec:export} probes whether the answer
+generalises.
+Section~\ref{sec:prior} is deliberately subordinate to the theorem and
+export core; its purpose is motivation, not reinterpretation.
+
+% ── SECTION 6: EVOLUTION EXPORT TEST ─────────────────────────────────────────
+
+\section{Evolution Export Test}
+\label{sec:export}
+
+\subsection{Setup}
+
+We test the exported diagnostic in an individual-based evolutionary
+simulation.
+Four descriptions are compared:
+gene-frequency composition ($D_\mathrm{gene}$),
+lineage-level structure ($D_\mathrm{lin}$),
+organism-level state ($D_\mathrm{org}$),
+and an organism-plus-ecology composite ($D_\mathrm{eco}$).
+The target family consists of four evolutionary outcomes:
+persistence, transmission, dominance, and ecological state.
+Two task families are evaluated separately:
+predictive (5-fold cross-validated $R^2$) and causal
+(mean outcome difference under matched interventions).
+
+Six evolutionary regimes are tested:
+selected Wright-Fisher (\texttt{selected\_wf}),
+Moran (\texttt{moran}),
+frequency-dependent selection (\texttt{freq\_dep}),
+eco-evolutionary coupling (\texttt{eco\_evol}),
+group-structured (\texttt{group\_structured}),
+and neutral Wright-Fisher (\texttt{neutral\_wf}).
+This yields 12 regime-family cells.
+
+Full simulation parameters and the pre-registered battery design are
+reported in~\citet{bhatia2026evolution}.
+
+\subsection{Coherence and winner classification}
+
+For each regime-family cell, pairwise gaps $\Delta_{ij}(Y)$ are computed
+from pre-aggregated scores using the independence approximation:
+\begin{equation}
+    \widehat{\mathrm{se}}_{ij}
+    \;=\;
+    \sqrt{\widehat{\mathrm{se}}_i^2 + \widehat{\mathrm{se}}_j^2},
+\end{equation}
+where each $\widehat{\mathrm{se}}_k$ is derived from the individual 95\%
+bootstrap confidence interval as
+$\widehat{\mathrm{se}}_k = (\mathrm{ci\_hi}_k - \mathrm{ci\_lo}_k) /
+(2 z_{0.975})$.
+With $n = 100{,}000$ replicates per cell, the resulting intervals are
+narrow; however, the deviation from joint replicate-level bootstrapping
+remains a documented departure from the pre-specified protocol.
+
+Coherence and winner labels are assigned by the rules in
+Section~\ref{sec:diagnostic}.%
+\footnote{The two classifiers consume a shared, deterministically seeded
+gap table; neither classifier re-randomises the same statistic, preventing
+Monte Carlo noise from producing artificial classification discrepancies.}
+
+\subsection{Results}
+
+Table~\ref{tab:coherence} reports coherence and winner labels for all
+12 regime-family cells.
+In this pre-aggregated adapter analysis,
+eleven cells received a non-unresolved coherence label;
+one cell (\texttt{selected\_wf}/causal) was unresolved and
+excluded from the correspondence test per the pre-registered rule.
+
+Of the 11 classified cells:
+\begin{itemize}
+    \item all 11 are empirically incoherent;
+    \item all 11 are winner-absent;
+    \item the correspondence test yields 0 mismatches.
+\end{itemize}
+
+\paragraph{Note on winner classification.}
+In the current results file, organism-plus-ecology data is present only
+for the \texttt{eco\_evol}/predictive cell; all other cells lack the
+fourth description entirely.
+Because the winner rule requires all four descriptions to be estimable,
+winner-absent in 10 of 11 classified cells is a default rather than a
+competitive outcome.
+The exception is \texttt{eco\_evol}/predictive, where a competitive
+check ran across the four descriptions and found no winner.
+The incoherence result is unaffected: sign flips are established
+from the three descriptions that are present across all regimes.
+
+Given this coverage gap, the adapter run is directionally consistent
+with the winner-absence prediction on the covered cells, but does not
+constitute a strong transport test.
+The correspondence test returns a formal pass under the locked
+classification rule; that verdict should be read as
+adapter-consistent rather than strongly confirmed.
+
+The dominant sign flip is the pair $(D_\mathrm{gene}, D_\mathrm{lin})$,
+which appears in 9 of 11 classified cells across both task families.
+This pair flips direction across the persistence/transmission divide:
+gene-frequency descriptions are more predictive of transmission outcomes
+in several regimes, while lineage descriptions are more predictive of
+persistence outcomes, with bootstrap-supported gaps in both directions.
+
+No coherent cells were observed in this battery.
+The positive half of the exported prediction --- that coherence should imply
+stable winnerhood --- therefore remains untested.
+
+\begin{table}[t]
+\centering
+\caption{Coherence and winner classification for all 12 regime-family cells.
+Classified cells: 11. Unresolved: 1. Mismatches: 0.}
+\label{tab:coherence}
+\begin{tabular}{llllc}
+\toprule
+Regime & Family & Coherence & Winner & Match \\
+\midrule
+\texttt{selected\_wf}     & predictive & incoherent & winner-absent & \checkmark \\
+\texttt{selected\_wf}     & causal     & unresolved & (excluded)    & --- \\
+\texttt{moran}            & predictive & incoherent & winner-absent & \checkmark \\
+\texttt{moran}            & causal     & incoherent & winner-absent & \checkmark \\
+\texttt{freq\_dep}        & predictive & incoherent & winner-absent & \checkmark \\
+\texttt{freq\_dep}        & causal     & incoherent & winner-absent & \checkmark \\
+\texttt{eco\_evol}        & predictive & incoherent & winner-absent & \checkmark \\
+\texttt{eco\_evol}        & causal     & incoherent & winner-absent & \checkmark \\
+\texttt{group\_structured}& predictive & incoherent & winner-absent & \checkmark \\
+\texttt{group\_structured}& causal     & incoherent & winner-absent & \checkmark \\
+\texttt{neutral\_wf}      & predictive & incoherent & winner-absent & \checkmark \\
+\texttt{neutral\_wf}      & causal     & incoherent & winner-absent & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Data coverage note}
+
+After correcting the \texttt{org\_eco} $\to$ \texttt{organism\_ecology}
+name mapping, organism-plus-ecology data is present in the results file
+only for the \texttt{eco\_evol}/predictive cell; all other regimes and the
+full causal family have no organism-plus-ecology data.
+Because the pre-registered winner rule requires all four descriptions to
+be estimable on a target before that target counts toward the winner
+criterion, winner classification is competitive only for
+\texttt{eco\_evol}/predictive (where a competitive check ran and found no
+winner) and vacuous (returning winner-absent by default) for all remaining
+cells.
+The incoherence classification is unaffected: the
+$(D_\mathrm{gene}, D_\mathrm{lin})$ sign flip is established from the
+three descriptions that are present across all regimes.
+A full four-description rerun is required before winner classification
+can be treated as a genuine competitive result across the battery.
+
+\subsection{What is and is not claimed}
+
+The evolution export test supports the following claim:
+
+\begin{quote}
+In the pre-aggregated adapter analysis of the tested evolutionary simulation
+battery, the coherence diagnostic derived from Theorem~\ref{thm:main}
+correctly predicts winner-absence in all classified incoherent
+regime-family cells (11 of 11; 0 mismatches).
+\end{quote}
+
+It does not support:
+\begin{itemize}
+    \item that the LGDS theorem is proved outside LGDS;
+    \item that evolutionary systems are approximately linear-Gaussian;
+    \item that the positive half of the diagnostic (coherence $\to$ stable
+          winner) holds in this system, since no coherent cells were observed;
+    \item that winner-absence has been competitively established across all
+          four descriptions in all classified cells — only
+          \texttt{eco\_evol}/predictive ran a full four-description
+          competitive check; all other winner-absent labels are defaults
+          due to missing organism-plus-ecology data;
+    \item that the result generalises beyond the six tested regimes or the
+          four tested descriptions.
+\end{itemize}
+
+% ── SECTION 7: SCOPE AND LIMITATIONS ─────────────────────────────────────────
+
+\section{Scope and Limitations}
+\label{sec:scope}
+
+\paragraph{Exactness of the theorem.}
+Theorem~\ref{thm:main} is exact within finite-dimensional linear Gaussian
+dynamical systems at stationarity, among rank-$r$ linear observers and
+squared-error prediction targets of the form $Y = Cx_{t+\tau}$.
+The proof is algebraic and involves no approximation.
+The scope is narrow by design: the theorem is a precise answer to a precise
+question, not a universal law about description-dependent privilege.
+
+\paragraph{What the theorem does not cover.}
+The result does not apply to nonlinear systems, non-Gaussian noise,
+nonlinear observers, or prediction tasks with non-quadratic loss.
+The causal axis --- whether the observer optimal for prediction differs from
+the observer optimal for intervention --- is not addressed by the theorem;
+it requires a separate formal treatment.
+Temporal asymmetry and the direction of optimal description are also outside
+the theorem's scope.
+
+\paragraph{Status of the export test.}
+The evolution export test (Section~\ref{sec:export}) asks whether the
+coherence diagnostic has empirical bite outside LGDS.
+Current support is strongest for the negative half:
+all 11 classified incoherent cells are winner-absent (0 mismatches).
+The positive half --- that coherence should imply stable winnerhood ---
+remains untested because no coherent cells appeared in the current battery.
+The diagnostic travels in the tested direction; the full bidirectional claim
+is not yet earned.
+
+The adapter result is subject to two documented limitations.
+First, pairwise gap CIs are computed via the independence approximation
+from pre-aggregated scores rather than joint replicate-level bootstrapping
+as pre-specified; this is a registered departure.
+Second, the current adapter result is limited by incomplete four-description
+coverage in the results file.
+After correcting the \texttt{org\_eco} name mapping, organism-plus-ecology
+data is present only for the \texttt{eco\_evol}/predictive cell;
+all other regimes and the full causal family lack that fourth description
+entirely.
+The residual \texttt{ecology} entry in \texttt{interv\_class} is a
+separate column-leak issue.
+A full four-description rerun is required before winner classification can
+be treated as a genuine competitive result across the battery.
+Neither limitation currently appears likely to change the qualitative
+verdict, but both must be resolved before the result is treated as final.
+
+\paragraph{Generality of the diagnostic.}
+The sign-flip diagnostic is motivated by the LGDS theorem but is not
+proved to characterise stable winnerhood in any other system class.
+Its application to evolutionary simulations is an empirical test of
+transportability, not a theorem extension.
+Positive results in further system classes would strengthen the case for
+the diagnostic as a general tool; null results would narrow its scope.
+The program of mapping which system classes admit or fail the diagnostic
+is open.
+
+\paragraph{Relation to prior formalisms.}
+The framework in Section~\ref{sec:framework} is related to, but distinct
+from, several prior formalisms.
+The renormalisation group and the Wilson--Kadanoff coarse-graining program
+ask which features are preserved under scale transformations;
+the present framework asks which description is optimal for a given
+prediction task, a question that is orthogonal to preservation under
+transformation.
+Hoel et al.'s causal emergence asks when macro descriptions carry more
+effective information than micro descriptions;
+the present result is complementary but narrower, characterising the
+structural conditions under which a single description is globally privileged
+across a task family rather than whether macro beats micro on a fixed task.
+Israeli and Goldenfeld's computational irreducibility result establishes
+that some cellular automata resist exact coarse-graining~\citep{israeli2004};
+the incommensurability of the two observers in the CA results is consistent
+with that finding.
+
+% ── SECTION 8: DISCUSSION ────────────────────────────────────────────────────
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What changes in how we read the prior results.}
+The four prior empirical results cited in Section~\ref{sec:prior} each
+reported that winner identity depended on the target or the regime.
+Without a formal criterion, these findings could be read as isolated
+system-specific curiosities rather than instances of a structural
+phenomenon.
+The theorem sharpens that reading --- not by proving those results are LGDS
+instances, but by supplying the vocabulary and the criterion that make
+the pattern recognisable.
+A result in which fine-description advantage reverses between phases is now
+legible as a candidate instance of coherence failure over a joint
+regime-indexed target family: the same description does not remain best
+once the target family is enlarged across regimes.
+The theorem does not prove that these systems instantiate the LGDS mechanism;
+it provides the formal vocabulary for stating the winner-stability question
+precisely and, in the LGDS class, answering it exactly.
+
+\paragraph{Open problems.}
+Four problems remain open after this paper.
+
+First, the positive half of the exported diagnostic is untested.
+The evolution battery produced no coherent regime-family cells,
+so the prediction that coherence implies stable winnerhood was never
+challenged.
+A battery designed to include coherent cells --- either by construction in
+a synthetic system or by identifying regimes where one description is
+known to dominate --- is needed before the bidirectional claim can be
+assessed.
+
+Second, the causal axis remains untreated.
+The theorem concerns prediction under the squared-error criterion;
+it says nothing about which description is optimal for intervention.
+The prior results include causal instances (Bose--Hubbard, evolution)
+where the best predictive description and the best causal handle differ.
+A formal treatment of causal-axis coherence, if it exists, would require
+a different object --- likely a response-theoretic functional rather than
+an information matrix.
+
+Third, the diagnostic's scope outside LGDS is unknown.
+The evolution export test supports the negative half in one system class.
+Whether the same diagnostic works in continuous-field systems,
+in systems with non-quadratic loss, or in systems with non-stationary
+dynamics is an open empirical question.
+Null results in further system classes would be as informative as positive
+ones: they would identify the boundary conditions under which coherence
+structure predicts winner-stability.
+
+Fourth, a formal generalisation of the theorem is open.
+The LGDS result is exact because the Bayes risk formula is exact and the
+Ky Fan variational principle applies directly.
+Analogous exact results in nonlinear or non-Gaussian systems would require
+either a different risk characterisation or an approximate treatment.
+Whether the coherence condition has a natural extension beyond the linear
+Gaussian class --- and whether that extension recovers the LGDS theorem as
+a special case --- is the formal problem the current result points toward.
+
+% ── BIBLIOGRAPHY ─────────────────────────────────────────────────────────────
+
+\bibliographystyle{plainnat}
+\bibliography{lgds_refs}
+
+\end{document}

@@ -1,0 +1,297 @@
+{
+  "prereg_date": "2026-03-28",
+  "ci_method": "independence_approximation",
+  "verdict": "pass",
+  "n_classified": 11,
+  "n_mismatch": 0,
+  "classified_cells": [
+    {
+      "regime": "selected_wf",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "moran",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "moran",
+      "family": "causal",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "freq_dep",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "freq_dep",
+      "family": "causal",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "eco_evol",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "eco_evol",
+      "family": "causal",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "group_structured",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "group_structured",
+      "family": "causal",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "neutral_wf",
+      "family": "predictive",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    },
+    {
+      "regime": "neutral_wf",
+      "family": "causal",
+      "coherence": "incoherent",
+      "winner": "winner_absent",
+      "match": true
+    }
+  ],
+  "unresolved_cells": [
+    [
+      "selected_wf",
+      "causal"
+    ]
+  ],
+  "mismatches": [],
+  "full_results": {
+    "selected_wf": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_flipping",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      },
+      "causal": {
+        "coherence_label": "unresolved",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_stable",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_stable",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    },
+    "moran": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_flipping",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      },
+      "causal": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_stable",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    },
+    "freq_dep": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_stable",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      },
+      "causal": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_flipping",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "undetermined",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    },
+    "eco_evol": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "sign_stable",
+          "('lineage', 'organism')": "sign_flipping",
+          "('lineage', 'organism_ecology')": "sign_flipping",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {}
+      },
+      "causal": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_flipping",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "undetermined",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    },
+    "group_structured": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_flipping",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      },
+      "causal": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_stable",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    },
+    "neutral_wf": {
+      "predictive": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_flipping",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      },
+      "causal": {
+        "coherence_label": "incoherent",
+        "winner_label": "winner_absent",
+        "winner_desc": null,
+        "pair_labels": {
+          "('gene', 'lineage')": "sign_flipping",
+          "('gene', 'organism')": "sign_stable",
+          "('gene', 'organism_ecology')": "undetermined",
+          "('lineage', 'organism')": "sign_stable",
+          "('lineage', 'organism_ecology')": "undetermined",
+          "('organism', 'organism_ecology')": "undetermined"
+        },
+        "winner_detail": {
+          "reason": "no_estimable_targets"
+        }
+      }
+    }
+  }
+}
