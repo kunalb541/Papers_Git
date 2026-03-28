@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  28 MAR 2026 08:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.24)  28 MAR 2026 08:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -530,26 +530,26 @@ ine 469.
 File: outputs/figures/fig4_pred_map.pdf Graphic file (type pdf)
 <use outputs/figures/fig4_pred_map.pdf>
 Package pdftex.def Info: outputs/figures/fig4_pred_map.pdf  used on input line 
-511.
+510.
 (pdftex.def)             Requested size: 345.98302pt x 161.6234pt.
 <outputs/figures/fig5_caus_map.pdf, id=407, 642.09956pt x 297.38272pt>
 File: outputs/figures/fig5_caus_map.pdf Graphic file (type pdf)
 <use outputs/figures/fig5_caus_map.pdf>
 Package pdftex.def Info: outputs/figures/fig5_caus_map.pdf  used on input line 
-522.
+521.
 (pdftex.def)             Requested size: 336.88313pt x 156.0239pt.
  [7]
-<outputs/figures/fig6_neutral.pdf, id=423, 579.05133pt x 244.46005pt>
+<outputs/figures/fig6_neutral.pdf, id=424, 579.05133pt x 244.46005pt>
 File: outputs/figures/fig6_neutral.pdf Graphic file (type pdf)
 <use outputs/figures/fig6_neutral.pdf>
 Package pdftex.def Info: outputs/figures/fig6_neutral.pdf  used on input line 5
-53.
+55.
 (pdftex.def)             Requested size: 327.7763pt x 138.38129pt.
-<outputs/figures/fig7_boundary.pdf, id=425, 533.50452pt x 493.64702pt>
+<outputs/figures/fig7_boundary.pdf, id=426, 533.50452pt x 493.64702pt>
 File: outputs/figures/fig7_boundary.pdf Graphic file (type pdf)
 <use outputs/figures/fig7_boundary.pdf>
 Package pdftex.def Info: outputs/figures/fig7_boundary.pdf  used on input line 
-579.
+581.
 (pdftex.def)             Requested size: 355.08984pt x 328.55737pt.
  [8 <./outputs/figures/fig3_dissociation.pdf>] [9 <./outputs/figures/fig4_pred_
 map.pdf> <./outputs/figures/fig5_caus_map.pdf>] [10 <./outputs/figures/fig6_neu
@@ -569,7 +569,7 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 Here is how much of TeX's memory you used:
  14196 strings out of 469006
  219780 string characters out of 5454813
- 686241 words of memory out of 5000000
+ 686233 words of memory out of 5000000
  42360 multiletter control sequences out of 15000+600000
  653101 words of font info for 213 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -597,10 +597,10 @@ ve/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/t
 exlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/loc
 al/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on outputs/logs/paper.pdf (17 pages, 460644 bytes).
+Output written on outputs/logs/paper.pdf (17 pages, 460807 bytes).
 PDF statistics:
- 1075 PDF objects out of 1200 (max. 8388607)
- 572 compressed objects within 6 object streams
+ 1076 PDF objects out of 1200 (max. 8388607)
+ 573 compressed objects within 6 object streams
  137 named destinations out of 1000 (max. 500000)
  46343 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -418,7 +418,7 @@ Across all six regimes and four targets, we identify \NcellsDiss{} cells
 satisfying the dissociation criterion (Table~\ref{tab:dissociation};
 Figure~\ref{fig:dissociation}).
 In all \NcellsDiss{} cells, gene composition is the causal winner.
-In eight of those \NcellsDiss{} cells, a higher-level summary is the predictive winner.
+In all \NcellsDiss{} cells, a higher-level summary is the predictive winner.
 
 \begin{table}[t]
 \centering
@@ -469,11 +469,10 @@ but the causal substrate remains allele composition (\GrpCausGap{}).
 \includegraphics[width=0.88\textwidth]{outputs/figures/fig3_dissociation.pdf}
 \caption{\textbf{Confirmed dissociation cells (n=\NcellsDiss{}).}
 \textbf{(A)} Predictive winner score (cross-validated $R^2$ for continuous targets,
-AUC for dominance; 95\,\% CI) for each cell.
-Color indicates winning observer level.
+AUC for dominance; 95\,\% CI) for each cell. Color indicates winning observer level.
 \textbf{(B)} Causal gap of the winning intervention (95\,\% CI) for each cell.
-Gene composition is the causal winner in all \NcellsDiss{} cells; a higher-level observer
-is the predictive winner in eight of those cells.}
+Gene composition is the causal winner in all \NcellsDiss{} cells;
+a higher-level summary is the predictive winner in all \NcellsDiss{} cells.}
 \label{fig:dissociation}
 \end{figure}
 
@@ -537,8 +536,11 @@ This is expected: allele frequencies are positively autocorrelated
 over time even under pure drift, because the Markov chain
 moves slowly relative to the observation window.
 Crucially, no dissociation is present here: gene composition is also
-the causal winner under drift (a gene intervention moves allele
-frequencies and therefore transmission directly).
+the strongest causal handle under drift---a gene intervention moves allele
+frequencies and therefore transmission directly, though the causal gap
+reflects sampling variance rather than selective pressure and is therefore
+excluded from the causal winner map (Figure~\ref{fig:caus_map}), which
+reports only selection-driven regimes.
 
 We include this result to make two methodological points explicit.
 First, high predictive power at the gene level is not evidence of
