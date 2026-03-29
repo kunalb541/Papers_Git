@@ -301,19 +301,6 @@ def bootstrap_partial_r(x, y, z, n_boot=1000, seed=0):
     return float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
 
 
-def ridge_cv_r2(X, y, alpha=1.0, cv=5):
-    X = np.asarray(X, float)
-    y = np.asarray(y, float)
-    m = np.all(np.isfinite(X), axis=1) & np.isfinite(y)
-    X = X[m]
-    y = y[m]
-    if len(y) < cv + 1:
-        return np.nan
-    pipe = Pipeline([
-        ("sc", StandardScaler()),
-        ("rd", Ridge(alpha=alpha)),
-    ])
-    return float(cross_val_score(pipe, X, y, cv=cv, scoring="r2").mean())
 
 
 def standardize_cols(df: pd.DataFrame, cols):
@@ -598,16 +585,115 @@ def static_features_9(grid0, B, density):
     return np.array([occ_frac, norm_cc, autocorr, row_var, col_var, start_count, density, 0.0, 0.0], dtype=float)
 
 
-def bootstrap_peak_B(X_dict, y, B_list, n_boot=1000, seed=0):
-    rng = np.random.default_rng(seed)
-    n = len(y)
-    point_r2 = [ridge_cv_r2(X_dict[B], y) for B in B_list]
-    point_peak = B_list[int(np.nanargmax(point_r2))]
-    peaks = np.empty(n_boot, dtype=int)
+"""
+Drop-in replacements for ca.py:
+  - ridge_cv_r2 (was lines 304-316)
+  - bootstrap_peak_B (was lines 601-616)
 
+Root fix: bootstrap_peak_B previously called ridge_cv_r2 on resampled
+raw data, causing duplicate rows to cross train/test fold boundaries.
+The fix pre-computes OOS predictions per B per target once, then
+bootstraps only the metric.
+
+ridge_cv_r2 now delegates to get_cv_preds_ca so all call sites
+(Study B r2_table loops) remain unchanged and are also leak-free.
+"""
+
+
+def get_cv_preds_ca(X, y, alpha=1.0, cv=5, seed=0):
+    """
+    Clean k-fold OOS predictions for ca.py (sklearn pipeline path).
+    Scaler fit on training folds only. Returns yhat array aligned with y.
+    """
+    from sklearn.linear_model import Ridge
+    from sklearn.preprocessing import StandardScaler
+
+    X = np.asarray(X, float)
+    y = np.asarray(y, float)
+    mask = np.all(np.isfinite(X), axis=1) & np.isfinite(y)
+    X, y = X[mask], y[mask]
+    n = len(y)
+    if n < cv + 1:
+        return np.full(n, np.nan), mask
+
+    rng = np.random.default_rng(seed)
+    folds = np.array_split(rng.permutation(n), cv)
+    yhat = np.full(n, np.nan)
+
+    for i in range(cv):
+        te = folds[i]
+        tr = np.concatenate([folds[j] for j in range(cv) if j != i])
+        if len(tr) < 4 or len(te) < 2:
+            continue
+        Xtr, Xte, ytr = X[tr], X[te], y[tr]
+        sc = StandardScaler().fit(Xtr)
+        rd = Ridge(alpha=alpha).fit(sc.transform(Xtr), ytr)
+        yhat[te] = rd.predict(sc.transform(Xte))
+
+    return yhat, mask
+
+
+def ridge_cv_r2(X, y, alpha=1.0, cv=5, seed=0):
+    """
+    Thin wrapper -- unchanged call signature.
+    Now delegates to get_cv_preds_ca; no leakage.
+    """
+    X = np.asarray(X, float)
+    y = np.asarray(y, float)
+    yhat, mask = get_cv_preds_ca(X, y, alpha=alpha, cv=cv, seed=seed)
+    y_clean = y[mask]
+    finite = np.isfinite(yhat)
+    if finite.sum() < 2:
+        return np.nan
+    ss_t = np.sum((y_clean[finite] - y_clean[finite].mean()) ** 2)
+    if ss_t < 1e-20:
+        return np.nan
+    return float(1.0 - np.sum((y_clean[finite] - yhat[finite]) ** 2) / ss_t)
+
+
+def bootstrap_peak_B(X_dict, y, B_list, n_boot=1000, seed=0):
+    """
+    Bootstrap CI on peak-B location.
+
+    OOS predictions are computed once per B. The bootstrap resamples
+    (y, yhat_B) pairs to estimate the sampling distribution of the
+    argmax-R2 statistic. No train/test contamination.
+    """
+    y = np.asarray(y, float)
+    n = len(y)
+    rng = np.random.default_rng(seed)
+
+    # Pre-compute clean OOS predictions for each B; align all to the
+    # same index space (some masks may differ; use intersection).
+    preds = {}
+    masks = {}
+    for B in B_list:
+        yhat, mask = get_cv_preds_ca(X_dict[B], y, seed=seed + B)
+        preds[B] = yhat   # aligned to y[mask]
+        masks[B] = mask
+
+    # Common valid index: rows finite in y and in all yhat_B
+    common = np.ones(n, dtype=bool)
+    for B in B_list:
+        common &= masks[B] & np.isfinite(preds[B])
+    y_c = y[common]
+    yhats = {B: preds[B][common] for B in B_list}
+    nc = common.sum()
+
+    def r2_from_preds(y_b, yhat_b):
+        ss_t = np.sum((y_b - y_b.mean()) ** 2)
+        if ss_t < 1e-20:
+            return 0.0
+        return float(1.0 - np.sum((y_b - yhat_b) ** 2) / ss_t)
+
+    point_r2 = [r2_from_preds(y_c, yhats[B]) for B in B_list]
+    point_peak = B_list[int(np.nanargmax(point_r2))]
+
+    peaks = np.empty(n_boot, dtype=int)
     for i in range(n_boot):
-        idx = rng.integers(0, n, size=n)
-        vals = [ridge_cv_r2(X_dict[B][idx], y[idx]) for B in B_list]
+        idx = rng.integers(0, nc, nc)
+        y_b = y_c[idx]
+        vals = [r2_from_preds(y_b, yhats[B][idx]) for B in B_list]
         peaks[i] = B_list[int(np.nanargmax(vals))]
 
     ci_lo = int(np.percentile(peaks, 2.5))

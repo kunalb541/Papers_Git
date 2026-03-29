@@ -296,7 +296,7 @@ def run_all():
     sc = cfg["SEED"]
 
     for L in cfg["L_LIST"]:
-        N = L // 2
+        N = L // 2 if L % 2 == 0 else (L + 1) // 2
         for ju in cfg["J_OVER_U_LIST"]:
             print(f"\n--- L={L}, J/U={ju}, N={N}, D=? ---")
             sc += 1
@@ -364,22 +364,18 @@ def make_tables(all_res, cfg):
     for ju in [0.30, 0.40]:
         cells = []
         for Lval in [6, 7]:
-            all_diffs = []
+# NEW — use the per-condition CIs already computed, average across tau
+            matching = []
             for res in all_res:
                 if res["L"] != Lval:
                     continue
                 for r in res["results"]:
                     if abs(r["J_over_U"] - ju) < 0.001:
-                        all_diffs.extend(r.get("trial_diffs", []))
-            if all_diffs:
-                arr = np.array(all_diffs)
-                pooled = float(np.mean(arr))
-                boot = np.empty(1000)
-                for b in range(1000):
-                    bi = rng_boot.integers(0, len(arr), size=len(arr))
-                    boot[b] = np.mean(arr[bi])
-                lo = float(np.percentile(boot, 2.5))
-                hi = float(np.percentile(boot, 97.5))
+                        matching.append(r)
+            if matching:
+                pooled = float(np.mean([r["mean_diff"] for r in matching]))
+                lo = float(np.mean([r["ci_lo"] for r in matching]))
+                hi = float(np.mean([r["ci_hi"] for r in matching]))
                 cells.append(f"${pooled:.3f}$ $[{lo:.3f},\\,{hi:.3f}]$")
             else:
                 cells.append("---")

@@ -18,32 +18,32 @@ warmup OK
   disordered 3000/3000
 
 --- Axis 1: organism comparison ---
-  E                     : ΔR²=+0.1812  CI=[+0.1557,+0.2076]  R²=0.1792
-  E_ge3                 : ΔR²=+0.3054  CI=[+0.2793,+0.3289]  R²=0.3011
-  J                     : ΔR²=+0.0084  CI=[+0.0026,+0.0150]  R²=0.0051
-  E_ge3_plus_J          : ΔR²=+0.4150  CI=[+0.3887,+0.4433]  R²=0.4111
-  E_plus_J              : ΔR²=+0.2184  CI=[+0.1908,+0.2449]  R²=0.2153
-  minority              : ΔR²=-0.0000  CI=[-0.0008,+0.0008]  R²=-0.0027
+  E                     : ΔR²=+0.1742  CI=[+0.1485,+0.2000]  R²=0.1732
+  E_ge3                 : ΔR²=+0.2709  CI=[+0.2449,+0.2994]  R²=0.2698
+  J                     : ΔR²=+0.0099  CI=[+0.0037,+0.0156]  R²=0.0084
+  E_ge3_plus_J          : ΔR²=+0.3565  CI=[+0.3307,+0.3818]  R²=0.3546
+  E_plus_J              : ΔR²=+0.2144  CI=[+0.1869,+0.2410]  R²=0.2147
+  minority              : ΔR²=-0.0001  CI=[-0.0021,+0.0017]  R²=-0.0014
 
   Champion organism: E_ge3_plus_J
 
 --- Axis A: regime crossover (E vs phi8) ---
-  Ordered   T=1.8: ΔR²=+0.1825  CI=[+0.1576,+0.2094]
-  Disordered T=2.5: ΔR²=-0.0635  CI=[-0.0837,-0.0434]
+  Ordered   T=1.8: ΔR²=+0.1729  CI=[+0.1471,+0.1977]
+  Disordered T=2.5: ΔR²=-0.0502  CI=[-0.0685,-0.0330]
   Sign reversal: True
 
 --- Axis C: predictor/handle gap ---
-  R²([W0,Bmag]): 0.3776  R²(E): 0.1811  gap: +0.1965
+  R²([W0,Bmag]): 0.3754  R²(E): 0.1727  gap: +0.2028
 
 --- Axis 2: target comparison (ΔR² fine-over-coarse, predictor=E_ge3_plus_J) ---
   Criterion: ΔR² = R²(champion organism) - R²(phi_var8) on each target
   This identifies the target most specifically favoured by the fine organism,
   not merely the most predictable target overall.
-  dW                            : ΔR²=+0.4154  CI=[+0.3882,+0.4406]  R²_fine=0.4129  R²_coarse=-0.0036
-  dW_norm                       : ΔR²=+0.3874  CI=[+0.3615,+0.4113]  R²_fine=0.3872  R²_coarse=-0.0017
-  future_topshare               : ΔR²=+0.1222  CI=[+0.1058,+0.1426]  R²_fine=0.2714  R²_coarse=0.1467
-  future_changed_sites          : ΔR²=+0.0582  CI=[+0.0510,+0.0662]  R²_fine=0.9460  R²_coarse=0.8880
-  future_changed_frac           : ΔR²=+0.0577  CI=[+0.0503,+0.0656]  R²_fine=0.9460  R²_coarse=0.8878
+  dW                            : ΔR²=+0.3552  CI=[+0.3265,+0.3810]  R²_fine=0.3555  R²_coarse=-0.0009
+  dW_norm                       : ΔR²=+0.3404  CI=[+0.3155,+0.3655]  R²_fine=0.3413  R²_coarse=0.0031
+  future_topshare               : ΔR²=+0.1142  CI=[+0.0950,+0.1336]  R²_fine=0.2589  R²_coarse=0.1463
+  future_changed_sites          : ΔR²=+0.0541  CI=[+0.0470,+0.0617]  R²_fine=0.9440  R²_coarse=0.8896
+  future_changed_frac           : ΔR²=+0.0542  CI=[+0.0468,+0.0632]  R²_fine=0.9439  R²_coarse=0.8895
 
 --- Axis B: aligned vs misaligned generator ---
   Protocol: structure_aligned_sweep, two directions, vs baseline Glauber
@@ -55,10 +55,10 @@ warmup OK
 
   eps   | aligned dW              | misaligned dW           | sign_flip | dM_vs_dW_ratio
   ------------------------------------------------------------------------------------------
-  0.02  | +2.822 [+0.788,+4.566] | -6.703 [-8.592,-4.761] |      PASS | 0.000 (dM/dW_aligned)
-  0.05  | +5.785 [+3.820,+7.521] | -12.953 [-15.072,-10.792] |      PASS | 0.000 (dM/dW_aligned)
-  0.10  | +5.745 [+4.004,+7.666] | -26.684 [-28.543,-24.854] |      PASS | 0.000 (dM/dW_aligned)
-  0.20  | +7.087 [+5.372,+9.074] | -53.116 [-54.998,-51.102] |      PASS | 0.000 (dM/dW_aligned)
+  0.02  | +5.964 [+4.280,+7.957] | -5.565 [-7.468,-3.578] |      PASS | 0.000 (dM/dW_aligned)
+  0.05  | +5.472 [+3.646,+7.385] | -13.009 [-15.053,-11.106] |      PASS | 0.000 (dM/dW_aligned)
+  0.10  | +7.509 [+5.601,+9.260] | -25.624 [-27.798,-23.679] |      PASS | 0.000 (dM/dW_aligned)
+  0.20  | +6.969 [+4.969,+9.145] | -51.521 [-53.452,-49.599] |      PASS | 0.000 (dM/dW_aligned)
   NOTE on dM: the dominant effect is on ΔW; ΔM coupling is comparatively small.
   dM does not strictly null 4/4 — do not write 'ΔM null 4/4'.
   Paper wording: 'direction-specific on ΔW; ΔM remains comparatively small'.
@@ -77,11 +77,11 @@ warmup OK
 ======================================================================
 FINAL REPORT
 ======================================================================
-  Axis 1  champion:  E_ge3_plus_J  ΔR²=+0.4150
-  Axis A  crossover: T=1.8 ΔR²=+0.1825  T=2.5 ΔR²=-0.0635  sign_reversal=True
-  Axis 2  champion target: dW  ΔR²=+0.4154
-  Axis C  gap:       R²([W0,Bmag])=0.3776  R²(E)=0.1811  gap=+0.1965
+  Axis 1  champion:  E_ge3_plus_J  ΔR²=+0.3565
+  Axis A  crossover: T=1.8 ΔR²=+0.1729  T=2.5 ΔR²=-0.0502  sign_reversal=True
+  Axis 2  champion target: dW  ΔR²=+0.3552
+  Axis C  gap:       R²([W0,Bmag])=0.3754  R²(E)=0.1727  gap=+0.2028
   Axis B  sign_flips: 4/4  support=True
 
   All outputs: outputs/
-  Runtime: 73.5s
+  Runtime: 67.9s

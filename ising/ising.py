@@ -107,6 +107,16 @@ def tf(x, d=3): return f"{x:.{d}f}"
 # =============================================================================
 # 3. STATS
 # =============================================================================
+"""
+Drop-in replacement for ising.py lines 111-149.
+
+Root fix: dr2_boot and r2_boot previously bootstrapped raw data before CV,
+causing duplicate rows to appear in both train and test folds (~37% overlap
+at N=3000, k=5). Now OOS predictions are computed once on clean k-fold
+splits, and the bootstrap resamples only the evaluation metric.
+
+ridge_cv becomes a thin wrapper so all call sites are unchanged.
+"""
 
 def r2_oos(y, yhat):
     ss_r = np.sum((y - yhat) ** 2)
@@ -114,39 +124,89 @@ def r2_oos(y, yhat):
     return 0.0 if ss_t < 1e-20 else float(1 - ss_r / ss_t)
 
 
-def ridge_cv(X, y, alpha=ALPHA, k=5, seed=0):
+def get_cv_preds(X, y, alpha=ALPHA, k=5, seed=0):
+    """
+    True OOS predictions via k-fold CV -- no duplicate-row leakage.
+    Scaling is fit on training folds only and applied to the test fold.
+    Returns yhat array aligned with y.
+    """
     X = np.asarray(X, float)
-    if X.ndim == 1: X = X.reshape(-1, 1)
+    if X.ndim == 1:
+        X = X.reshape(-1, 1)
     y = np.asarray(y, float)
     rng = np.random.default_rng(seed)
     folds = np.array_split(rng.permutation(len(y)), k)
-    scores = []
+    yhat = np.full(len(y), np.nan)
     for i in range(k):
         te = folds[i]
         tr = np.concatenate([folds[j] for j in range(k) if j != i])
-        if len(tr) < 4 or len(te) < 2: continue
-        Xtr, Xte, ytr, yte = X[tr], X[te], y[tr], y[te]
-        mu = Xtr.mean(0); sd = Xtr.std(0); sd[sd < 1e-8] = 1.0
-        Xs = (Xtr - mu) / sd; ym = ytr.mean(); yc = ytr - ym; p = Xs.shape[1]
+        if len(tr) < 4 or len(te) < 2:
+            continue
+        Xtr, Xte, ytr = X[tr], X[te], y[tr]
+        mu = Xtr.mean(0)
+        sd = Xtr.std(0)
+        sd[sd < 1e-8] = 1.0
+        Xs = (Xtr - mu) / sd
+        ym = ytr.mean()
+        yc = ytr - ym
+        p = Xs.shape[1]
         b = np.linalg.solve(Xs.T @ Xs + alpha * np.eye(p), Xs.T @ yc)
-        scores.append(r2_oos(yte, (Xte - mu) / sd @ b + ym))
-    return float(np.mean(scores)) if scores else np.nan
+        yhat[te] = (Xte - mu) / sd @ b + ym
+    return yhat
+
+
+def ridge_cv(X, y, alpha=ALPHA, k=5, seed=0):
+    """Thin wrapper -- unchanged call signature, no leakage."""
+    yhat = get_cv_preds(X, y, alpha=alpha, k=k, seed=seed)
+    mask = np.isfinite(yhat)
+    return r2_oos(y[mask], yhat[mask])
 
 
 def dr2_boot(Xf, Xc, y, nb=500, seed=0):
-    rng = np.random.default_rng(seed); n = len(y); vals = np.empty(nb)
+    """
+    Bootstrap CI on delta-R2 (fine minus coarse).
+
+    OOS predictions are computed once on the full dataset via clean k-fold.
+    The bootstrap then resamples (y, yhat_f, yhat_c) triples to estimate
+    the sampling distribution of delta-R2. No train/test contamination.
+    """
+    yhat_f = get_cv_preds(Xf, y, seed=seed)
+    yhat_c = get_cv_preds(Xc, y, seed=seed + 1)
+    rng = np.random.default_rng(seed)
+    n = len(y)
+    vals = np.empty(nb)
     for b in range(nb):
         idx = rng.integers(0, n, n)
-        vals[b] = ridge_cv(Xf[idx], y[idx], seed=seed+b) - ridge_cv(Xc[idx], y[idx], seed=seed+b)
+        y_b = y[idx]
+        ss_t = np.sum((y_b - np.mean(y_b)) ** 2)
+        if ss_t < 1e-20:
+            vals[b] = 0.0
+            continue
+        r2_f = 1.0 - np.sum((y_b - yhat_f[idx]) ** 2) / ss_t
+        r2_c = 1.0 - np.sum((y_b - yhat_c[idx]) ** 2) / ss_t
+        vals[b] = r2_f - r2_c
     return float(np.mean(vals)), float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
 
 
 def r2_boot(X, y, nb=500, seed=0):
-    rng = np.random.default_rng(seed); n = len(y); vals = np.empty(nb)
+    """
+    Bootstrap CI on R2.
+    Same fix: compute OOS preds once, resample only the metric.
+    """
+    yhat = get_cv_preds(X, y, seed=seed)
+    rng = np.random.default_rng(seed)
+    n = len(y)
+    vals = np.empty(nb)
     for b in range(nb):
         idx = rng.integers(0, n, n)
-        vals[b] = ridge_cv(X[idx], y[idx], seed=seed+b)
+        y_b = y[idx]
+        ss_t = np.sum((y_b - np.mean(y_b)) ** 2)
+        if ss_t < 1e-20:
+            vals[b] = 0.0
+            continue
+        vals[b] = 1.0 - np.sum((y_b - yhat[idx]) ** 2) / ss_t
     return float(np.mean(vals)), float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
+
 
 
 def mci(vals, nb=400, seed=0):
